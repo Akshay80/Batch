@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;bold;bolder&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e5e5e5 !important;
+  font-family: "Jost", sans-serif !important;
+}
+
+.SendBtn
+{
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(23,119,175,1) 0%, rgba(13,104,171,1) 19%, rgba(8,68,110,1) 89%);
+    font-weight: 700;
+    font-family: "Jost", sans-serif !important;
+    text-transform: none!important;
+    border-radius: 8px!important;
+    width: 200px;
+}
+.UploadBtn{
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(23,119,175,1) 0%, rgba(13,104,171,1) 19%, rgba(8,68,110,1) 89%);
+    font-weight: 700;
+    font-family: "Jost", sans-serif !important;
+    text-transform: none!important;
+    border-radius: 8px!important;
+    width: 150px;
+}
+.CancelBtn{
+    font-weight: 700;
+    font-family: "Jost", sans-serif !important;
+    text-transform: none!important;
+    border-radius: 8px!important;
+    width: 150px;
+}
+.InfoImage{
+    position: absolute;
+    top: 17%;
+    right: 1%;
+    width: 25px;
+    height: 25px;
+    z-index: 99999;
+}
