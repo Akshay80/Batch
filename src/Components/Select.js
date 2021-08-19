@@ -22,7 +22,7 @@ function Select() {
                   <div class="col-sm-6">
                     <img src={Regular} alt="regular_image" width="250px" />
                     <div>
-                      <a href="#" class="btn btn-primary Buttons mt-3 mb-5">
+                      <a href="/#" class="btn btn-primary Buttons mt-3 mb-5">
                         &nbsp;Regular&nbsp;
                       </a>
                     </div>
@@ -30,7 +30,7 @@ function Select() {
                   <div class="col-sm-6">
                     <img src={Frenchise} alt="frenchise_image" width="250px" />
                     <div>
-                      <a href="#" class="btn btn-primary Buttons mt-3 mb-5">
+                      <a href="/#" class="btn btn-primary Buttons mt-3 mb-5">
                         Franchise
                       </a>
                     </div>

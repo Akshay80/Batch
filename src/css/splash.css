@@ -15,13 +15,18 @@ body
     font-size: 65px;
     font-weight: 500;
     text-align: left;
+    text-shadow: 1px 5px 2px lightgray!important;
+    letter-spacing: 2px;
 }
 .CardTitle2{
     color: #0E73BC;
     font-size: 30px;
     font-weight: 500;
     text-align: left;
+    text-shadow: 1px 5px 2px lightgray!important;
 }
 .CardText{
     text-align: left;
+    text-shadow: 0px 3px 3px gray !important;
+    line-height: 2;
 }

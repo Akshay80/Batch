@@ -15,7 +15,7 @@ function Registration() {
               class="signup-form mt-3  mb-5"
               style={{ borderRadius: 7, borderColor: "#0E73BC" }}
             >
-              <form>
+              <form autocomplete="off">
                 <h2>Registration</h2>
                 <div class="form-group">
                   <div class="row">
@@ -131,7 +131,7 @@ function Registration() {
                   Already have an account?{" "}
                 </div>
                 <a
-                  href="#"
+                  href="/#"
                   class="text-center SignIn"
                   style={{ margin: "auto", display: "block" }}
                 >

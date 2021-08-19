@@ -19,7 +19,7 @@ function Login() {
                 borderColor: "#0E73BC",
                 padding: "25px",
                 borderRadius: 3,
-                boxShadow:"5px 5px 10px rgba(0, 0, 0, 0.3)"
+                boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.3)",
               }}
             >
               <div class="row no-gutters">
@@ -29,21 +29,20 @@ function Login() {
                       class="signup-form mt-3"
                       style={{ borderRadius: 7, borderColor: "#0E73BC" }}
                     >
-                      <form>
+                      <form autocomplete="off">
                         <h2>Login</h2>
-                        {/* <p class="hint-text">Create your account. It's free and only takes a minute.</p> */}
                         <div class="form-group">
-                        <label
-                        for="exampleFormControlInput1"
-                        class="form-label"
-                        style={{
-                          color: "black",
-                          marginBottom: "unset!important",
-                          letterSpacing:1
-                        }}
-                      >
-                        Email
-                      </label>
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            style={{
+                              color: "black",
+                              marginBottom: "unset!important",
+                              letterSpacing: 1,
+                            }}
+                          >
+                            Email
+                          </label>
                           <input
                             type="email"
                             class="form-control"
@@ -54,17 +53,17 @@ function Login() {
                           />
                         </div>
                         <div class="form-group">
-                        <label
-                        for="exampleFormControlInput1"
-                        class="form-label"
-                        style={{
-                          color: "black",
-                          marginBottom: "unset!important",
-                          letterSpacing:1
-                        }}
-                      >
-                        Password
-                      </label>
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            style={{
+                              color: "black",
+                              marginBottom: "unset!important",
+                              letterSpacing: 1,
+                            }}
+                          >
+                            Password
+                          </label>
                           <input
                             type="password"
                             class="form-control"
@@ -84,7 +83,7 @@ function Login() {
                           <label
                             class="form-check-label"
                             for="flexCheckDefault"
-                            style={{ color: "black" , letterSpacing:1}}
+                            style={{ color: "black", letterSpacing: 1 }}
                           >
                             Remember Password
                           </label>
@@ -97,17 +96,20 @@ function Login() {
                             Sign In
                           </button>
                         </div>
-                        <div class="text-center" style={{ color: "black", letterSpacing:2 }}>
+                        <div
+                          class="text-center"
+                          style={{ color: "black", letterSpacing: 2 }}
+                        >
                           Don't have a account
                         </div>
                         <div className="text-center">
                           <a
-                            href="#"
+                            href="/#"
                             style={{
                               fontSize: 15,
                               display: "block",
                               margin: "0 auto",
-                              letterSpacing:2
+                              letterSpacing: 2,
                             }}
                           >
                             Register Now
@@ -123,6 +125,7 @@ function Login() {
                     className="mt-5 d-block mx-auto"
                     src={mobile}
                     width="320px"
+                    alt="mobile_image"
                   />
                 </div>
               </div>

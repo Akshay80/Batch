@@ -71,10 +71,6 @@ function Transaction() {
                     src={info}
                     alt="info"
                     align="left"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Information"
-                    tabindex="0"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   />

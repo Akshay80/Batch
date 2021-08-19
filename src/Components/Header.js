@@ -8,7 +8,7 @@ function Header() {
     {/* Header */}
     <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'white'}}>
       <div class="container">
-        <a class="navbar-brand" href="javascript:void(0);">
+        <a class="navbar-brand" href="/">
             <img src={logo} alt="logo"/>
         </a>
         <button
@@ -25,20 +25,19 @@ function Header() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <button type="button" class="btn btn-outline-primary m-2"> Home </button>
+              <a class="btn btn-outline-primary m-2" href="/"> Home </a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-outline-primary m-2"> Account </button>
+              <a class="btn btn-outline-primary m-2" href="/#"> Account </a>
             </li>
-            <li class="nav-item dropdown">
-            
-              <button type="button" class="btn btn-outline-primary m-2">CSV sample</button>
+            <li class="nav-item">            
+              <a class="btn btn-outline-primary m-2" href="/#">CSV sample</a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-outline-primary m-2"> Sign Up </button>
+              <a class="btn btn-outline-primary m-2" href="/registration"> Sign Up </a>
             </li>
             <li className="nav-item">
-            <button type="button" class="btn btn-primary m-2 signin"> Sign In </button>
+            <a class="btn btn-primary m-2 signin" href="/login"> Sign In </a>
             </li>
           </ul>
         </div>
