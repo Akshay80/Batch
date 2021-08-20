@@ -47,7 +47,7 @@ function Login() {
                             type="email"
                             class="form-control"
                             name="email"
-                            placeholder="Email"
+                            // placeholder="Email"
                             required="required"
                             autocomplete="off"
                           />
@@ -68,7 +68,7 @@ function Login() {
                             type="password"
                             class="form-control"
                             name="password"
-                            placeholder="Password"
+                            // placeholder="Password"
                             required="required"
                             autocomplete="off"
                           />
@@ -104,7 +104,7 @@ function Login() {
                         </div>
                         <div className="text-center">
                           <a
-                            href="/#"
+                            href="/registration"
                             style={{
                               fontSize: 15,
                               display: "block",

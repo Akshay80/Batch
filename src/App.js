@@ -12,33 +12,33 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    // <>
-    // <BrowserRouter>
-    //     <Switch>
-    //     <Route exact path="/" component={Splash}>
-    //         <Splash />
-    //       </Route>
-    //       <Route path="/registration" component={Registration} >
-    //         <Registration />
-    //       </Route>
-    //       <Route path="/login" component={Login}>
-    //         <Login />
-    //       </Route>
-    //       <Route path="/select" component={Select}>
-    //         <Select />
-    //       </Route>
-    //       <Route path="/batch-transaction" component={Transaction}>
-    //         <Transaction />
-    //       </Route>
-    //     </Switch>
-    //   </BrowserRouter>
-    //   </>
-      //  <Registration/>
-      // <Login />
-      // <Select/>
-      //  <Transaction/>
-      // <Fail />
-      <Success />
+    <>
+    <BrowserRouter>
+        <Switch>
+        <Route exact path="/" component={Splash}>
+            <Splash />
+          </Route>
+          <Route path="/registration" component={Registration} >
+            <Registration />
+          </Route>
+          <Route path="/login" component={Login}>
+            <Login />
+          </Route>
+          <Route path="/select" component={Select}>
+            <Select />
+          </Route>
+          <Route path="/batch-transaction" component={Transaction}>
+            <Transaction />
+          </Route>
+          <Route path="/success" component={Success}>
+            <Success />
+          </Route>
+          <Route path="/fail" component={Fail}>
+            <Fail />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+      </>
   );
 }
 

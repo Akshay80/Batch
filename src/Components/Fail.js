@@ -10,7 +10,7 @@ function Fail() {
     <>
       {/* Header */}
       <Header />
-  
+
       <div className="container">
         <div className="row">
           <div>
@@ -25,95 +25,192 @@ function Fail() {
               }}
             >
               <div className="card-body">
-                
                 <h2 class="card-title text-center cardTitle mb-2">
                   Batch Transition
                 </h2>
 
-              {/* Fail Component */}
+                {/* Fail Component */}
 
-                <img src={fails} alt="fail_image" className="d-block mx-auto mt-5"/>
-                <img src={failbox} alt="fail_box" width="250px" className="d-block mx-auto mt-5 failImage"/>
-                
+                <img
+                  src={fails}
+                  alt="fail_image"
+                  className="d-block mx-auto mt-5"
+                />
+                <img
+                  src={failbox}
+                  alt="fail_box"
+                  width="250px"
+                  className="d-block mx-auto mt-5 failImage"
+                />
+
                 <div class="container">
-                <div className="card innerCards">
-  <div class="row">      
-    <div class="col-sm pb-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">Wallet ID</span>
-  <input type="text" class="form-control rounded-start" placeholder="183nxjndhncjsn28" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    <div class="col-sm">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">Amount</span>
-  <input type="text" class="form-control rounded-start" placeholder="$102570.00" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    </div>
+                  <div className="card innerCards">
+                    <div class="row">
+                      <div class="col-sm pb-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            Wallet ID
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="183nxjndhncjsn28"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            Amount
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="$102570.00"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-    <div className="row">
-    <div class="col-sm mt-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;</span>
-  <input type="text" class="form-control rounded-start" placeholder="sample@gmail.com" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    <div class="col-sm mt-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">&nbsp;Name&nbsp;&nbsp;</span>
-  <input type="text" class="form-control rounded-start" placeholder="Test" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-  </div>
-</div>
+                    <div className="row">
+                      <div class="col-sm mt-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="sample@gmail.com"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm mt-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            &nbsp;Name&nbsp;&nbsp;
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="Test"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-              {/* Fail Component Ends Here */}
+                {/* Fail Component Ends Here */}
 
+                {/* Success Component */}
 
+                <img
+                  src={successbox}
+                  alt="success_box"
+                  width="250px"
+                  className="d-block mx-auto mt-5 failImage"
+                />
 
-
-               {/* Success Component */}
-
-                <img src={successbox} alt="success_box" width="250px" className="d-block mx-auto mt-5 failImage"/>
-                
                 <div class="container">
-                <div className="card innerCards mb-4">
-  <div class="row">      
-    <div class="col-sm pb-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">Wallet ID</span>
-  <input type="text" class="form-control rounded-start" placeholder="183nxjndhncjsn28" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    <div class="col-sm">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">Amount</span>
-  <input type="text" class="form-control rounded-start" placeholder="$102570.00" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    </div>
+                  <div className="card innerCards mb-4">
+                    <div class="row">
+                      <div class="col-sm pb-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            Wallet ID
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="183nxjndhncjsn28"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            Amount
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="$102570.00"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                    </div>
 
-    <div className="row">
-    <div class="col-sm mt-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;</span>
-  <input type="text" class="form-control rounded-start" placeholder="sample@gmail.com" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-    <div class="col-sm mt-3">
-    <div class="input-group input-group-sm ">
-  <span class="input-group-text textboxSide" id="basic-addon1">&nbsp;Name&nbsp;&nbsp;</span>
-  <input type="text" class="form-control rounded-start" placeholder="Test" aria-label="Username" aria-describedby="basic-addon1"/>
-</div>
-    </div>
-  </div>
-</div>
+                    <div className="row">
+                      <div class="col-sm mt-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="sample@gmail.com"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-sm mt-3">
+                        <div class="input-group input-group-sm ">
+                          <span
+                            class="input-group-text textboxSide"
+                            id="basic-addon1"
+                          >
+                            &nbsp;Name&nbsp;&nbsp;
+                          </span>
+                          <input
+                            type="text"
+                            class="form-control rounded-start"
+                            placeholder="Test"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-              {/* Success Component Ends Here */}
-
+                {/* Success Component Ends Here */}
               </div>
             </div>
           </div>

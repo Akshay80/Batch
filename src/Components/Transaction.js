@@ -32,7 +32,7 @@ function Transaction() {
                     type="text"
                     class="form-control"
                     name="btcAddress"
-                    placeholder="Bitcoin Address"
+                    placeholder="0x1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"
                   />
                 </div>
                 <label

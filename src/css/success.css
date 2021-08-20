@@ -32,41 +32,42 @@ body {
   border: 2px solid #125e11 !important;
   padding: 25px;
   margin-top: -35px;
-  border-radius: unset!important;
+  border-radius: unset !important;
 }
 
 .outerfailureCard {
   border: 2px solid #ef1c1c !important;
-  border-radius: unset!important;
+  border-radius: unset !important;
   padding: 25px;
   margin-top: -35px;
 }
 
-.textboxTitle{
-    letter-spacing: 1px !important;
-    border: 2px solid #0e73bc !important;
-    background-color: #0e73bc !important;
-    color: #fff !important;
-    font-weight: 500 !important;
-    font-size: .875rem!important;
-    width: 98%!important;
-    margin: auto;
+.textboxTitle {
+  letter-spacing: 1px !important;
+  border: 2px solid #0e73bc !important;
+  background-color: #0e73bc !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  width: 98% !important;
+  margin: auto;
 }
 
-.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: black!important;
-    opacity: 1; /* Firefox */
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black !important;
+  opacity: 1; /* Firefox */
 }
 
-.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: black!important;
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black !important;
 }
 
-.form-control::-ms-input-placeholder { /* Microsoft Edge */
-    color: black!important;
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black !important;
 }
-
-
 
 @media (max-width: 415px) {
   .failImage {

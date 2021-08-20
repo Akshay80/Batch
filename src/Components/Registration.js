@@ -35,7 +35,7 @@ function Registration() {
                         type="text"
                         class="form-control form-control-sm"
                         name="name"
-                        placeholder="Name"
+                        // placeholder="Name"
                         required="required"
                       />
                     </div>
@@ -55,7 +55,7 @@ function Registration() {
                         type="email"
                         class="form-control form-control-sm"
                         name="email"
-                        placeholder="Email"
+                        // placeholder="Email"
                         required="required"
                       />
                     </div>
@@ -73,7 +73,7 @@ function Registration() {
                     type="tel"
                     class="form-control form-control-sm"
                     name="phoneno"
-                    placeholder="Phone number"
+                    // placeholder="Phone number"
                     required="required"
                   />
                 </div>
@@ -89,7 +89,7 @@ function Registration() {
                     type="password"
                     class="form-control form-control-sm"
                     name="password"
-                    placeholder="Password"
+                    // placeholder="Password"
                     required="required"
                     autocomplete="off"
                   />
@@ -106,7 +106,7 @@ function Registration() {
                     type="password"
                     class="form-control form-control-sm"
                     name="confirm_password"
-                    placeholder="Confirm Password"
+                    // placeholder="Confirm Password"
                     required="required"
                     autocomplete="off"
                   />
@@ -131,7 +131,7 @@ function Registration() {
                   Already have an account?{" "}
                 </div>
                 <a
-                  href="/#"
+                  href="/login"
                   class="text-center SignIn"
                   style={{ margin: "auto", display: "block" }}
                 >

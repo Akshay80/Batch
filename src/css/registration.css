@@ -1,85 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rasa:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rasa:wght@300;400&display=swap");
 
 .form-control {
-	border-color: #0E73BC!important ;
-   
+  border-color: #0e73bc !important ;
 }
 .form-control:focus {
-	border-color: #0E73BC ;
+  border-color: #0e73bc;
 }
-.form-control, .btn {        
-	border-radius: 3px;
+.form-control,
+.btn {
+  border-radius: 3px;
 }
 .signup-form {
-	width: 90%;
-	margin: 0 auto;
-	padding: 30px 0;
-  	font-size: 15px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 0;
+  font-size: 15px;
 }
 .signup-form h2 {
-	margin: 0 0 15px;
-	position: relative;
-	text-align: center;
-    color: #0E73BC;
-    font-size: 27px;
-    font-weight: 500;
-    letter-spacing: 2px;
+  margin: 0 0 15px;
+  position: relative;
+  text-align: center;
+  color: #0e73bc;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 .signup-form form {
-    border:2px solid #0E73BC;
-	border-radius: 10px;
-	margin-bottom: 15px;
-	background: #ffffff;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	padding: 30px;
-	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
+  border: 2px solid #0e73bc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .signup-form .form-group {
-	margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 .signup-form input[type="checkbox"] {
-	margin-top: 3px;
+  margin-top: 3px;
 }
-.signup-form .btn {        
-	font-size: 16px;
-    background-color:#0E73BC;
-    color:#fff;	
-    text-transform: uppercase;	
-	min-width: 140px;
-	outline: none !important;
-    font-family: 'Rasa', serif;
-    border-radius: 50px;
+.signup-form .btn {
+  font-size: 16px;
+  background-color: #0e73bc;
+  color: #fff;
+  text-transform: uppercase;
+  min-width: 140px;
+  outline: none !important;
+  font-family: "Rasa", serif;
+  border-radius: 50px;
 }
-.signup-form .btn:hover {        
-    background-color:#0E73BC;
-    color:#fff;	
+.signup-form .btn:hover {
+  background-color: #0e73bc;
+  color: #fff;
 }
 .signup-form .row div:first-child {
-	padding-right: 10px;
+  padding-right: 10px;
 }
 .signup-form .row div:last-child {
-	padding-left: 10px;
-}    	
+  padding-left: 10px;
+}
 .signup-form a {
-	color: #fff;
-	text-decoration: underline;
+  color: #fff;
+  text-decoration: underline;
 }
 .signup-form a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 .signup-form form a {
-	color: #0E73BC;
-	text-decoration: none;
-}	
-.signup-form form a:hover {
-	text-decoration: underline;
-}  
-.SignIn{
-	font-size: 15px;
-	font-weight:"bold";
-	letter-spacing:2px;
+  color: #0e73bc;
+  text-decoration: none;
 }
-.SignIn:hover{
-	text-decoration: none!important
+.signup-form form a:hover {
+  text-decoration: none;
+}
+.SignIn {
+  font-size: 15px;
+  font-weight: "bold";
+  letter-spacing: 2px;
+}
+.SignIn:hover {
+  text-decoration: none !important;
 }
