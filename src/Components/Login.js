@@ -13,7 +13,7 @@ function Login() {
         <div className="row">
           <div>
             <div
-              class="card mt-5 mb-5"
+              class="card mt-5 mb-5 loginOuterCard"
               style={{
                 maxWidth: "100%",
                 borderColor: "#0E73BC",
@@ -122,7 +122,7 @@ function Login() {
 
                 <div class="col-md-6 mt-5">
                   <img
-                    className="mt-5 d-block mx-auto"
+                    className="mt-5 d-block mx-auto mobile"
                     src={mobile}
                     width="320px"
                     alt="mobile_image"

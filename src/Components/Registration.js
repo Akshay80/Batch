@@ -141,7 +141,7 @@ function Registration() {
             </div>
           </div>
           <div className="col-md-6 mt-5 pt-4">
-            <img src={group} class="mt-5 mb-3 d-block mx-auto" alt="group_image" />
+            <img src={group} class="mt-5 mb-3 d-block mx-auto group" alt="group_image" />
           </div>
         </div>
       </div>

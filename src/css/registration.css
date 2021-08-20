@@ -82,3 +82,9 @@
 .SignIn:hover {
   text-decoration: none !important;
 }
+@media(max-width:415px)
+{
+  .group{
+    width: 100%;
+  }
+}

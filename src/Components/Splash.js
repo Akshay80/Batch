@@ -38,9 +38,9 @@ function Splash() {
                     &nbsp;
                     <p className="card-text CardTitle2">Available At</p>
                     <div style={{ textAlign: "left" }}>
-                    <img src={google} alt="google_playstore" />
+                    <img src={google} alt="google_playstore" className="pb-2"/>
                       &nbsp; &nbsp;
-                     <img src={apple} alt="apple_playstore"/>
+                     <img src={apple} alt="apple_store" width="136px" height="50px" className="pb-2"/>
                     </div>
                   </div>
                 </div>
