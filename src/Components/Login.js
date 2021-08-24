@@ -1,19 +1,59 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "../css/login.css";
 import mobile from "../images/mobile.png";
 import Header from "./Header";
 
+import AuthContext from "../context/auth/AuthContext";
+import { Redirect } from "react-router-dom";
+
 function Login() {
+  const { isLoading, isAuth, login, login_error, clearErrors } =
+    useContext(AuthContext);
+
+  console.log("state isAuth", isAuth);
+
+  const [formdata, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  if (isAuth) {
+    return <Redirect to="/batch-transaction" />;
+  }
+
+  const handleChange = (e) => {
+    clearErrors();
+    setFormData({ ...formdata, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    console.log("form data", formdata.email, formdata.password);
+
+    const errors = [];
+
+    if (formdata.email === "") {
+      errors.push(1);
+    }
+    if (formdata.password === "") {
+      errors.push(1);
+    }
+
+    if (errors.length === 0) {
+      console.log("No errors.");
+      login(formdata.email, formdata.password);
+    }
+  };
+
   return (
     <>
-      {/* Header */}
       <Header />
-<p>hi</p>
       <div className="container">
         <div className="row">
           <div>
             <div
-              class="card mt-5 mb-5 loginOuterCard"
+              className="card mt-5 mb-5 loginOuterCard"
               style={{
                 maxWidth: "100%",
                 borderColor: "#0E73BC",
@@ -22,19 +62,19 @@ function Login() {
                 boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <div class="row no-gutters">
-                <div class="col-md-6">
-                  <div class="card-body">
+              <div className="row no-gutters">
+                <div className="col-md-6">
+                  <div className="card-body">
                     <div
-                      class="signup-form mt-3"
+                      className="signup-form mt-3"
                       style={{ borderRadius: 7, borderColor: "#0E73BC" }}
                     >
-                      <form autocomplete="off">
+                      <form autoComplete="off">
                         <h2>Login</h2>
-                        <div class="form-group">
+                        <div className="form-group">
                           <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
+                            htmlFor="exampleFormControlInput1"
+                            className="form-label"
                             style={{
                               color: "black",
                               marginBottom: "unset!important",
@@ -45,17 +85,19 @@ function Login() {
                           </label>
                           <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             name="email"
                             // placeholder="Email"
                             required="required"
-                            autocomplete="off"
+                            autoComplete="off"
+                            value={formdata.email}
+                            onChange={handleChange}
                           />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                           <label
-                            for="exampleFormControlInput1"
-                            class="form-label"
+                            htmlFor="exampleFormControlInput1"
+                            className="form-label"
                             style={{
                               color: "black",
                               marginBottom: "unset!important",
@@ -66,38 +108,51 @@ function Login() {
                           </label>
                           <input
                             type="password"
-                            class="form-control"
+                            className="form-control"
                             name="password"
                             // placeholder="Password"
                             required="required"
-                            autocomplete="off"
+                            autoComplete="off"
+                            value={formdata.password}
+                            onChange={handleChange}
                           />
                         </div>
-                        <div class="form-check">
+                        <div className="form-check">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                             value=""
                             id="flexCheckDefault"
                           />
                           <label
-                            class="form-check-label"
-                            for="flexCheckDefault"
+                            className="form-check-label"
+                            htmlFor="flexCheckDefault"
                             style={{ color: "black", letterSpacing: 1 }}
                           >
                             Remember Password
                           </label>
                         </div>
-                        <div class="form-group">
+                        <p className="text-danger">{login_error}</p>
+                        <div className="form-group">
                           <button
                             type="submit"
-                            class="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-5"
+                            className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-5"
+                            onClick={handleLogin}
                           >
-                            Sign In
+                            {isLoading ? (
+                              <>
+                                <div
+                                  className="spinner-border spinner-border-sm text-white"
+                                  role="status"
+                                ></div>
+                              </>
+                            ) : (
+                              "Sign In"
+                            )}
                           </button>
                         </div>
                         <div
-                          class="text-center"
+                          className="text-center"
                           style={{ color: "black", letterSpacing: 2 }}
                         >
                           Don't have a account
@@ -120,7 +175,7 @@ function Login() {
                   </div>
                 </div>
 
-                <div class="col-md-6 mt-5">
+                <div className="col-md-6 mt-5">
                   <img
                     className="mt-5 d-block mx-auto mobile"
                     src={mobile}

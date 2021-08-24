@@ -5,61 +5,65 @@ import info from "../images/info.png";
 import csv from "../images/csv.png";
 
 function Transaction() {
+  const userData = JSON.parse(localStorage.getItem("user"));
+
+  console.log(userData);
+
   return (
     <>
-      {/* Header */}
       <Header />
-
       <div className="container">
         <div className="row no-gutters">
           <div className="col-lg-12 col-md-12 col-sm">
             <div
-              class="signup-form mt-3"
+              className="signup-form mt-3"
               style={{ borderRadius: 7, borderColor: "#0E73BC" }}
             >
               <form>
-                <h2 class="mb-5">Batch Transaction</h2>
+                <h2 className="mb-5">Batch Transaction</h2>
 
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleFormControlInput1"
-                    class="form-label"
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
                     style={{ color: "black" }}
                   >
                     Bitcoin Address
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     name="btcAddress"
-                    placeholder="0x1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"
+                    // placeholder="0x1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"
+                    defaultValue={userData.btcAddress}
+                    disabled
                   />
                 </div>
                 <label
-                  for="exampleFormControlInput1"
-                  class="form-label"
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
                   style={{ color: "black" }}
                 >
                   Select Fee Rate
                 </label>
-                <select class="form-select">
-                  <option selected>Open this select menu</option>
+                <select className="form-select">
+                  <option>Open this select menu</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
 
                 <label
-                  for="exampleFormControlInput1"
-                  class="form-label mt-3"
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label mt-3"
                   style={{ color: "black" }}
                 >
                   Upload CSV
                 </label>
-                <div class="input-group">
+                <div className="input-group">
                   <input
                     type="file"
-                    class="form-control"
+                    className="form-control"
                     id="inputGroupFile04"
                     aria-describedby="inputGroupFileAddon04"
                     required="required"
@@ -77,29 +81,29 @@ function Transaction() {
                 </div>
 
                 <div
-                  class="modal fade "
+                  className="modal fade "
                   id="exampleModal"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header border-0">
+                  <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                      <div className="modal-header border-0">
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">
+                      <div className="modal-body">
                         <img src={csv} alt="csv_image" width="100%" />
                       </div>
-                      <div class="modal-footer border-0">
+                      <div className="modal-footer border-0">
                         <button
                           type="button"
-                          class="btn btn-secondary SendBtn"
+                          className="btn btn-secondary SendBtn"
                           data-bs-dismiss="modal"
                         >
                           Close
@@ -108,10 +112,10 @@ function Transaction() {
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
+                    className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
                   >
                     Send
                   </button>

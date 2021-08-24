@@ -1,127 +1,171 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "../css/registration.css";
 import group from "../images/Group.png";
 import Header from "./Header";
+
+import AuthContext from "../context/auth/AuthContext";
+
 function Registration() {
+  const { register, register_error, clearErrors } = useContext(AuthContext);
+
+  console.log("register_error", register_error);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e) => {
+    clearErrors();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const errors = [];
+    if (formData.name === "") {
+      errors.push(1);
+    }
+    if (formData.email === "") {
+      errors.push(1);
+    }
+    if (formData.password === "") {
+      errors.push(1);
+    }
+    if (formData.confirmPassword === "") {
+      errors.push(1);
+    }
+    if (formData.password !== formData.confirmPassword) {
+      errors.push(1);
+    }
+    if (errors.length === 0) {
+      console.log(formData);
+      register(formData.name, formData.email, formData.password);
+    }
+  };
+
   return (
     <>
-      {/* Header */}
       <Header />
-
       <div className="container">
         <div className="row no-gutters">
           <div className="col-md-6">
             <div
-              class="signup-form mt-3  mb-5"
+              className="signup-form mt-3  mb-5"
               style={{ borderRadius: 7, borderColor: "#0E73BC" }}
             >
-              <form autocomplete="off">
+              <form autoComplete="off">
                 <h2>Registration</h2>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col">
+                <div className="form-group">
+                  <div className="row">
+                    <div className="col">
                       <label
-                        for="exampleFormControlInput1"
-                        class="form-label"
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
                         style={{
                           color: "black",
                           marginBottom: "unset!important",
-                          letterSpacing: 1
+                          letterSpacing: 1,
                         }}
                       >
                         Name
                       </label>
                       <input
                         type="text"
-                        class="form-control form-control-sm"
+                        className="form-control form-control-sm"
                         name="name"
                         // placeholder="Name"
                         required="required"
+                        value={formData.name}
+                        onChange={handleChange}
                       />
                     </div>
-                    <div class="col">
+                    <div className="col">
                       <label
-                        for="exampleFormControlInput1"
-                        class="form-label"
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
                         style={{
                           color: "black",
                           marginBottom: "unset!important",
-                          letterSpacing: 1
+                          letterSpacing: 1,
                         }}
                       >
                         Email
                       </label>
                       <input
                         type="email"
-                        class="form-control form-control-sm"
+                        className="form-control form-control-sm"
                         name="email"
                         // placeholder="Email"
                         required="required"
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleFormControlInput1"
-                    class="form-label"
-                    style={{ color: "black", marginBottom: "unset!important",letterSpacing: 1 }}
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    class="form-control form-control-sm"
-                    name="phoneno"
-                    // placeholder="Phone number"
-                    required="required"
-                  />
-                </div>
-                <div class="form-group">
-                  <label
-                    for="exampleFormControlInput1"
-                    class="form-label"
-                    style={{ color: "black", marginBottom: "unset!important", letterSpacing: 1 }}
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                    style={{
+                      color: "black",
+                      marginBottom: "unset!important",
+                      letterSpacing: 1,
+                    }}
                   >
                     Password
                   </label>
                   <input
                     type="password"
-                    class="form-control form-control-sm"
+                    className="form-control form-control-sm"
                     name="password"
                     // placeholder="Password"
                     required="required"
-                    autocomplete="off"
+                    autoComplete="off"
+                    value={formData.password}
+                    onChange={handleChange}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
-                    for="exampleFormControlInput1"
-                    class="form-label"
-                    style={{ color: "black", marginBottom: "unset!important", letterSpacing: 1}}
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                    style={{
+                      color: "black",
+                      marginBottom: "unset!important",
+                      letterSpacing: 1,
+                    }}
                   >
                     Confirm Password
                   </label>
                   <input
                     type="password"
-                    class="form-control form-control-sm"
-                    name="confirm_password"
+                    className="form-control form-control-sm"
+                    name="confirmPassword"
                     // placeholder="Confirm Password"
                     required="required"
-                    autocomplete="off"
+                    autoComplete="off"
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
                   />
                 </div>
-                <div class="form-group">
+                <p className="text-danger">{register_error}</p>
+                <div className="form-group">
                   <button
                     type="submit"
-                    class="btn btn-primary btn-lg btn-block d-block mx-auto mb-4 mt-4"
+                    className="btn btn-primary btn-lg btn-block d-block mx-auto mb-4 mt-4"
                     style={{ fontWeight: "bold", letterSpacing: 1 }}
+                    onClick={handleRegister}
                   >
                     Sign Up
                   </button>
                 </div>
                 <div
-                  class="text-center mt-4"
+                  className="text-center mt-4"
                   style={{
                     color: "black",
                     fontWeight: "300",
@@ -132,7 +176,7 @@ function Registration() {
                 </div>
                 <a
                   href="/login"
-                  class="text-center SignIn"
+                  className="text-center SignIn"
                   style={{ margin: "auto", display: "block" }}
                 >
                   Sign In
@@ -141,7 +185,11 @@ function Registration() {
             </div>
           </div>
           <div className="col-md-6 mt-5 pt-4">
-            <img src={group} class="mt-5 mb-3 d-block mx-auto group" alt="group_image" />
+            <img
+              src={group}
+              className="mt-5 mb-3 d-block mx-auto group"
+              alt="group_image"
+            />
           </div>
         </div>
       </div>

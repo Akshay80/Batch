@@ -15,40 +15,53 @@ function Splash() {
         <div className="row text-center">
           <div>
             <div
-              class="card mt-5 mb-5"
+              className="card mt-5 mb-5"
               style={{
                 maxWidth: "100%",
                 borderColor: "#0E73BC",
                 padding: "25px",
                 borderRadius: 8,
-                boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.3)"
+                boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.3)",
               }}
             >
-              <div class="row no-gutters">
-                <div class="col-md-6">
-                  <div class="card-body">
-                    <h5 class="card-title CardTitle">
+              <div className="row no-gutters">
+                <div className="col-md-6">
+                  <div className="card-body">
+                    <h5 className="card-title CardTitle">
                       Money <br />
                       Transfer
                     </h5>
-                    <p class="card-text CardText">
-                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type. It has survived not only five centuries, It has survived not only five centuries, It has survived not only five centuries,
- 
+                    <p className="card-text CardText">
+                      Lorem Ipsum has been the industry's standard dummy text
+                      ever since the 1500s, when an unknown printer took a
+                      galley of type. It has survived not only five centuries,
+                      It has survived not only five centuries, It has survived
+                      not only five centuries,
                     </p>
                     &nbsp;
                     <p className="card-text CardTitle2">Available At</p>
                     <div style={{ textAlign: "left" }}>
-                    <img src={google} alt="google_playstore" className="pb-2"/>
+                      <img
+                        src={google}
+                        alt="google_playstore"
+                        className="pb-2"
+                      />
                       &nbsp; &nbsp;
-                     <img src={apple} alt="apple_store" width="136px" height="50px" className="pb-2"/>
+                      <img
+                        src={apple}
+                        alt="apple_store"
+                        width="136px"
+                        height="50px"
+                        className="pb-2"
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-6 mt-5 mb-3">
+                <div className="col-md-6 mt-5 mb-3">
                   <img
                     src={crypto}
-                    class="mt-5 mx-auto"
+                    className="mt-5 mx-auto"
                     width="80%"
                     alt="crypto_image"
                   />

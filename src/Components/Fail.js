@@ -15,7 +15,7 @@ function Fail() {
         <div className="row">
           <div>
             <div
-              class="card mt-5 mb-5"
+              className="card mt-5 mb-5"
               style={{
                 maxWidth: "100%",
                 borderWidth: 2,
@@ -25,7 +25,7 @@ function Fail() {
               }}
             >
               <div className="card-body">
-                <h2 class="card-title text-center cardTitle mb-2">
+                <h2 className="card-title text-center cardTitle mb-2">
                   Batch Transition
                 </h2>
 
@@ -43,37 +43,37 @@ function Fail() {
                   className="d-block mx-auto mt-5 failImage"
                 />
 
-                <div class="container">
+                <div className="container">
                   <div className="card innerCards">
-                    <div class="row">
-                      <div class="col-sm pb-3">
-                        <div class="input-group input-group-sm ">
+                    <div className="row">
+                      <div className="col-sm pb-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             Wallet ID
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="183nxjndhncjsn28"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                           />
                         </div>
                       </div>
-                      <div class="col-sm">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             Amount
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="$102570.00"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -83,34 +83,34 @@ function Fail() {
                     </div>
 
                     <div className="row">
-                      <div class="col-sm mt-3">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm mt-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="sample@gmail.com"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                           />
                         </div>
                       </div>
-                      <div class="col-sm mt-3">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm mt-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             &nbsp;Name&nbsp;&nbsp;
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="Test"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -132,37 +132,37 @@ function Fail() {
                   className="d-block mx-auto mt-5 failImage"
                 />
 
-                <div class="container">
+                <div className="container">
                   <div className="card innerCards mb-4">
-                    <div class="row">
-                      <div class="col-sm pb-3">
-                        <div class="input-group input-group-sm ">
+                    <div className="row">
+                      <div className="col-sm pb-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             Wallet ID
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="183nxjndhncjsn28"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                           />
                         </div>
                       </div>
-                      <div class="col-sm">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             Amount
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="$102570.00"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
@@ -172,34 +172,34 @@ function Fail() {
                     </div>
 
                     <div className="row">
-                      <div class="col-sm mt-3">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm mt-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="sample@gmail.com"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                           />
                         </div>
                       </div>
-                      <div class="col-sm mt-3">
-                        <div class="input-group input-group-sm ">
+                      <div className="col-sm mt-3">
+                        <div className="input-group input-group-sm ">
                           <span
-                            class="input-group-text textboxSide"
+                            className="input-group-text textboxSide"
                             id="basic-addon1"
                           >
                             &nbsp;Name&nbsp;&nbsp;
                           </span>
                           <input
                             type="text"
-                            class="form-control rounded-start"
+                            className="form-control rounded-start"
                             placeholder="Test"
                             aria-label="Username"
                             aria-describedby="basic-addon1"
