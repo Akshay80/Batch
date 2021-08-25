@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../css/transaction.css";
 import Header from "./Header";
 import info from "../images/info.png";
-import csv from "../images/csv.png";
+import csv from "../images/csv.svg";
+
+import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Transaction() {
+  const { feeRate, getFeeRate, getBalance, batchTransaction } =
+    useContext(DashboardContext);
+
   const userData = JSON.parse(localStorage.getItem("user"));
 
   console.log(userData);
+
+  useEffect(() => {
+    getFeeRate();
+    getBalance();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const [formData, setFormData] = useState({
+    commissionPercent: "",
+    feeRate: "",
+    file: null,
+    userId: "",
+  });
+
+  const handleFileChange = (e) => {
+    console.log(e.target.files[0]);
+    setFormData({ ...formData, file: e.target.files[0] });
+  };
+
+  const handleBatchTransaction = (e) => {
+    e.preventDefault();
+    console.log(formData.commissionPercent, formData.feeRate, formData.file);
+
+    const fd = new FormData();
+    fd.set("commissionPercent", formData.commissionPercent);
+    fd.set("feeRate", formData.feeRate);
+    fd.set("file", formData.file);
+    fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
+    console.log("formData", fd);
+
+    batchTransaction(fd);
+  };
 
   return (
     <>
@@ -39,6 +75,30 @@ function Transaction() {
                     disabled
                   />
                 </div>
+
+                <div className="form-group">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                    style={{ color: "black" }}
+                  >
+                    Comission Percent
+                  </label>
+                  <select
+                    className="form-select"
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        commissionPercent: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Comission Percent</option>
+                    <option value="1">{userData.defixCommission}%</option>
+                    <option value="1.5">{userData.externalCommission}%</option>
+                  </select>
+                </div>
+
                 <label
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
@@ -46,11 +106,18 @@ function Transaction() {
                 >
                   Select Fee Rate
                 </label>
-                <select className="form-select">
-                  <option>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select
+                  className="form-select"
+                  onChange={(e) =>
+                    setFormData({ ...formData, feeRate: e.target.value })
+                  }
+                >
+                  <option value="">Select Fee Rate</option>
+                  {feeRate.map((item) => (
+                    <option key={item.feeRate} value={item.feeRate}>
+                      {item.message} - {item.priority}
+                    </option>
+                  ))}
                 </select>
 
                 <label
@@ -67,6 +134,7 @@ function Transaction() {
                     id="inputGroupFile04"
                     aria-describedby="inputGroupFileAddon04"
                     required="required"
+                    onChange={handleFileChange}
                   />
                   <input
                     type="image"
@@ -116,6 +184,7 @@ function Transaction() {
                   <button
                     type="submit"
                     className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
+                    onClick={handleBatchTransaction}
                   >
                     Send
                   </button>

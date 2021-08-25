@@ -8,7 +8,7 @@ import AuthReducer from "./AuthReducer";
 import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  REGISTER_SUCCESS,
+  // REGISTER_SUCCESS,
   REGISTER_FAILURE,
   LOGOUT,
   // VALIDATE_PASSCODE_SUCCESS,
@@ -17,6 +17,7 @@ import {
   VERIFY_EMAIL_FAILURE,
   SET_LOADING_TRUE,
   CLEAR_ERRORS,
+  SHOW_VERIFY_EMAIL_ALERT,
 } from "./types";
 
 if (!localStorage.getItem("isAuth")) {
@@ -33,6 +34,9 @@ const AuthState = (props) => {
     isAuth: localStorage.user ? true : false,
     login_error: "",
     register_error: "",
+    showVerifyEmailAlert: false,
+    isEmailVerified: false,
+    success_msg: "",
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -61,7 +65,18 @@ const AuthState = (props) => {
       }
     } catch (error) {
       console.log(error.response);
-      if (error.response.data.error) {
+
+      if (
+        error?.response?.data?.error ===
+        "Email is not verified yet. Please check the inbox of email you used for registration, email may also be in spam folder"
+      ) {
+        dispatch({
+          type: SHOW_VERIFY_EMAIL_ALERT,
+          payload: error.response.data.error,
+        });
+      }
+
+      if (error?.response?.data?.error) {
         return dispatch({
           type: LOGIN_FAILURE,
           payload: error.response.data.error,
@@ -87,8 +102,8 @@ const AuthState = (props) => {
       console.log(data);
 
       if (data.success) {
-        // dispatch({ type: REGISTER_SUCCESS, payload: data.userData });
-        login(email, password);
+        dispatch({ type: SHOW_VERIFY_EMAIL_ALERT });
+        return;
       } else {
         dispatch({ type: REGISTER_FAILURE, payload: data.error });
       }
@@ -131,6 +146,7 @@ const AuthState = (props) => {
     setLoading();
     try {
       const { data } = await axios.get(baseURL + `/user/verifyEmail/${userId}`);
+      console.log(data);
       if (data.success) {
         dispatch({ type: VERIFY_EMAIL_SUCCESS, payload: data.message });
       } else {
@@ -156,6 +172,9 @@ const AuthState = (props) => {
         isLoading: state.isLoading,
         login_error: state.login_error,
         register_error: state.register_error,
+        showVerifyEmailAlert: state.showVerifyEmailAlert,
+        isEmailVerified: state.isEmailVerified,
+        success_msg: state.success_msg,
         login,
         register,
         verifyEmail,

@@ -8,6 +8,10 @@ import {
   // VERIFY_EMAIL_FAILURE,
   SET_LOADING_TRUE,
   CLEAR_ERRORS,
+  VERIFY_EMAIL_SUCCESS,
+  VERIFY_EMAIL_FAILURE,
+  SHOW_VERIFY_EMAIL_ALERT,
+  HIDE_VERIFY_EMAIL_ALERT,
 } from "./types";
 
 const AuthReducer = (state, action) => {
@@ -50,7 +54,27 @@ const AuthReducer = (state, action) => {
         register_error: action.payload,
         isLoading: false,
       };
-
+    case SHOW_VERIFY_EMAIL_ALERT:
+      return {
+        ...state,
+        showVerifyEmailAlert: true,
+      };
+    case HIDE_VERIFY_EMAIL_ALERT:
+      return {
+        ...state,
+        showVerifyEmailAlert: false,
+      };
+    case VERIFY_EMAIL_SUCCESS:
+      return {
+        ...state,
+        isEmailVerified: true,
+        success_msg: action.payload,
+      };
+    case VERIFY_EMAIL_FAILURE:
+      return {
+        ...state,
+        isEmailVerified: false,
+      };
     case LOGOUT:
       localStorage.clear();
       return {
