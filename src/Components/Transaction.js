@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "../css/transaction.css";
 import Header from "./Header";
 import info from "../images/info.png";
@@ -7,12 +7,10 @@ import csv from "../images/csv.svg";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Transaction() {
-  const { feeRate, getFeeRate, getBalance, batchTransaction } =
+  const { feeRate, getFeeRate, getBalance, batchTransaction, uploadPercent } =
     useContext(DashboardContext);
 
   const userData = JSON.parse(localStorage.getItem("user"));
-
-  console.log(userData);
 
   useEffect(() => {
     getFeeRate();
@@ -26,23 +24,43 @@ function Transaction() {
     userId: "",
   });
 
+  const fileAlert = useRef(null);
+
   const handleFileChange = (e) => {
-    console.log(e.target.files[0]);
-    setFormData({ ...formData, file: e.target.files[0] });
+    if (e.target.files[0].type.split("/")[1] === "csv") {
+      fileAlert.current.innerText = "";
+      setFormData({ ...formData, file: e.target.files[0] });
+    } else {
+      setFormData({ ...formData });
+      console.log("Not a valid file type");
+      fileAlert.current.innerText = "Not a valid file type.";
+    }
   };
 
   const handleBatchTransaction = (e) => {
     e.preventDefault();
-    console.log(formData.commissionPercent, formData.feeRate, formData.file);
 
-    const fd = new FormData();
-    fd.set("commissionPercent", formData.commissionPercent);
-    fd.set("feeRate", formData.feeRate);
-    fd.set("file", formData.file);
-    fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
-    console.log("formData", fd);
+    const errors = [];
 
-    batchTransaction(fd);
+    if (formData.commissionPercent === "") {
+      errors.push(1);
+    }
+    if (formData.feeRate === "") {
+      errors.push(1);
+    }
+    if (formData.file === null) {
+      errors.push(1);
+    }
+
+    if (errors.length === 0) {
+      const fd = new FormData();
+      fd.set("commissionPercent", formData.commissionPercent);
+      fd.set("feeRate", formData.feeRate);
+      fd.set("file", formData.file);
+      fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
+
+      batchTransaction(fd);
+    }
   };
 
   return (
@@ -147,7 +165,7 @@ function Transaction() {
                     data-bs-target="#exampleModal"
                   />
                 </div>
-
+                <p ref={fileAlert} className="text-danger mt-2"></p>
                 <div
                   className="modal fade "
                   id="exampleModal"
@@ -186,7 +204,7 @@ function Transaction() {
                     className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
                     onClick={handleBatchTransaction}
                   >
-                    Send
+                    {uploadPercent ? `Uploading...${uploadPercent}%` : "Send"}
                   </button>
                 </div>
               </form>

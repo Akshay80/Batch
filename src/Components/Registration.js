@@ -17,8 +17,6 @@ function Registration() {
     showVerifyEmailAlert,
   } = useContext(AuthContext);
 
-  console.log("register_error", register_error);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,7 +53,6 @@ function Registration() {
       errors.push(1);
     }
     if (errors.length === 0) {
-      console.log(formData);
       register(formData.name, formData.email, formData.password, Redirect);
     }
   };

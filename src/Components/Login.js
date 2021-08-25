@@ -17,8 +17,6 @@ function Login() {
     showVerifyEmailAlert,
   } = useContext(AuthContext);
 
-  console.log("state isAuth", isAuth);
-
   const [formdata, setFormData] = useState({
     email: "",
     password: "",
@@ -36,8 +34,6 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log("form data", formdata.email, formdata.password);
-
     const errors = [];
 
     if (formdata.email === "") {
@@ -48,7 +44,6 @@ function Login() {
     }
 
     if (errors.length === 0) {
-      console.log("No errors.");
       login(formdata.email, formdata.password);
     }
   };
