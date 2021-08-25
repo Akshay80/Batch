@@ -24,26 +24,21 @@ function Login() {
   const handleChange = (e) => {
     clearErrors();
     setFormData({ ...formdata, [e.target.name]: e.target.value });
+    const emails = document.querySelector("input[id=mail]");
+    const passwords = document.querySelector("input[id=pass]");
+    console.log(emails.value);
+    if (emails.value === "") {
+      emails.setCustomValidity("Please fill in this field!");
+    } else if (passwords.value === "") {
+      passwords.setCustomValidity("Please fill in this field!");
+    } else {
+      passwords.setCustomValidity("");
+    }
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    console.log("form data", formdata.email, formdata.password);
-
-    const errors = [];
-
-    if (formdata.email === "") {
-      errors.push(1);
-    }
-    if (formdata.password === "") {
-      errors.push(1);
-    }
-
-    if (errors.length === 0) {
-      console.log("No errors.");
-      login(formdata.email, formdata.password);
-    }
+    login(formdata.email, formdata.password);
   };
 
   return (
@@ -69,7 +64,7 @@ function Login() {
                       className="signup-form mt-3"
                       style={{ borderRadius: 7, borderColor: "#0E73BC" }}
                     >
-                      <form autoComplete="off">
+                      <form autoComplete="off" onSubmit={handleLogin}>
                         <h2>Login</h2>
                         <div className="form-group">
                           <label
@@ -87,7 +82,7 @@ function Login() {
                             type="email"
                             className="form-control"
                             name="email"
-                            // placeholder="Email"
+                            id="mail"
                             required="required"
                             autoComplete="off"
                             value={formdata.email}
@@ -110,7 +105,7 @@ function Login() {
                             type="password"
                             className="form-control"
                             name="password"
-                            // placeholder="Password"
+                            id="pass"
                             required="required"
                             autoComplete="off"
                             value={formdata.password}
@@ -137,7 +132,6 @@ function Login() {
                           <button
                             type="submit"
                             className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-5"
-                            onClick={handleLogin}
                           >
                             {isLoading ? (
                               <>

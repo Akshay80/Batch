@@ -1,0 +1,23 @@
+@media(max-width: 991px)
+{
+    .verifyCard
+    {
+        width: 70%!important;
+    }
+}
+
+@media(max-width: 768px)
+{
+    .verifyCard
+    {
+        width: 80%!important;
+    }
+}
+
+@media(max-width: 362px)
+{
+    .verifyCard
+    {
+        width: 90%!important;
+    }
+}
