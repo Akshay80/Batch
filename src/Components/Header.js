@@ -48,7 +48,7 @@ function Header() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="btn btn-outline-primary m-2" href="/#">
+                <a className="btn btn-outline-primary m-2" href="/sample">
                   CSV sample
                 </a>
               </li>
