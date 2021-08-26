@@ -29,16 +29,6 @@ function Login() {
   const handleChange = (e) => {
     clearErrors();
     setFormData({ ...formdata, [e.target.name]: e.target.value });
-    const emails = document.querySelector("input[id=mail]");
-    const passwords = document.querySelector("input[id=pass]");
-    console.log(emails.value);
-    if (emails.value === "") {
-      emails.setCustomValidity("Please fill in this field!");
-    } else if (passwords.value === "") {
-      passwords.setCustomValidity("Please fill in this field!");
-    } else {
-      passwords.setCustomValidity("");
-    }
   };
 
   const handleLogin = (e) => {
@@ -89,14 +79,12 @@ function Login() {
                               </label>
                               <input
                                 type="email"
-                                className="form-control"
                                 name="email"
-                                id="mail"
-                                // placeholder="Email"
-                                required="required"
+                                className="form-control"   
                                 autoComplete="off"
                                 value={formdata.email}
                                 onChange={handleChange}
+                                required="required"
                               />
                             </div>
                             <div className="form-group">
@@ -115,8 +103,6 @@ function Login() {
                                 type="password"
                                 className="form-control"
                                 name="password"
-                                id="pass"
-                                // placeholder="Password"
                                 required="required"
                                 autoComplete="off"
                                 value={formdata.password}
