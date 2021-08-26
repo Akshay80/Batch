@@ -49,8 +49,6 @@ const DashboardState = (props) => {
     }
   };
 
-  getFeeRate()
-
   const getBalance = async () => {
     try {
       const { data } = await axios.get(
