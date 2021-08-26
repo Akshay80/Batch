@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
 import success from "../images/success-icon.png";
@@ -8,11 +9,15 @@ import successbox from "../images/success-box.png";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Receipt() {
-  const { receiptData } = useContext(DashboardContext);
+  const { showReceipt, receiptData } = useContext(DashboardContext);
 
   console.log("RECEIPT_DATA", receiptData);
 
   const { externalWallets } = receiptData;
+
+  if (!showReceipt) {
+    return <Redirect to="/batch-transaction" />;
+  }
 
   return (
     <>
@@ -34,26 +39,26 @@ function Receipt() {
                 <h2 className="card-title text-center cardTitle mb-2">
                   Batch Transition
                 </h2>
-
+                {/* 
                 <img
                   src={success}
                   alt="success_image"
                   className="d-block mx-auto mt-5"
-                />
+                /> */}
 
                 {/* Success Component */}
 
-                <img
+                {/* <img
                   src={successbox}
                   alt="success_box"
                   width="250px"
                   className="d-block mx-auto mt-5 failImage"
-                />
+                /> */}
 
-                <div className="container">
-                  <div className="card outerSuccessCard">
-                    {/* First Card (Txn ID, Amount, Fees, Confirmation) */}
-                    <div className="card innerCards1 mb-3">
+                {/* <div className="container">
+                  <div className="card outerSuccessCard"> */}
+                {/* First Card (Txn ID, Amount, Fees, Confirmation) */}
+                {/* <div className="card innerCards1 mb-3">
                       <div className="row">
                         <div className="col-sm">
                           <div className="input-group input-group-sm ">
@@ -127,13 +132,13 @@ function Receipt() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
-                    {/* First Card (TxnID, Amount, Fees, Confirmation) Ends Here */}
+                {/* First Card (TxnID, Amount, Fees, Confirmation) Ends Here */}
 
-                    {/* Second Card (Address, Amount) */}
+                {/* Second Card (Address, Amount) */}
 
-                    <div className="card innerCards1 mb-1">
+                {/* <div className="card innerCards1 mb-1">
                       <div className="row">
                         <div
                           className="input-group-text textboxTitle mb-3"
@@ -195,11 +200,11 @@ function Receipt() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
-                    {/* Second Card (Address, Amount) ends here */}
-                  </div>
-                </div>
+                {/* Second Card (Address, Amount) ends here */}
+                {/* </div>
+                </div> */}
                 {/* Success Component Ends Here */}
 
                 {externalWallets.map(
