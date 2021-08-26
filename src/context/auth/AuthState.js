@@ -113,28 +113,6 @@ const AuthState = (props) => {
     }
   };
 
-  //   const validatePasscode = (passcode) => {
-  //     try {
-  //       const { data } = await axios.post(
-  //         baseURL + "/user/protected/validatePasscode",
-  //         { passcode: passcode, userId: localStorage.getItem("userData").id },
-  //         { headers: { "Content-Type": "application/json" } }
-  //       );
-
-  //       if (data.success) {
-  //         dispatch({ type: VALIDATE_PASSCODE_SUCCESS });
-  //       } else {
-  //         dispatch({ type: VALIDATE_PASSCODE_FAILURE });
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //       dispatch({
-  //         type: VALIDATE_PASSCODE_FAILURE,
-  //         payload: "Something went wrong.",
-  //       });
-  //     }
-  //   };
-
   const verifyEmail = async (userId) => {
     setLoading();
     try {
@@ -146,9 +124,11 @@ const AuthState = (props) => {
         dispatch({ type: VERIFY_EMAIL_FAILURE, payload: data.error });
       }
     } catch (error) {
+      console.log("Error");
       // console.log(error);
       // console.log(error.response);
       if (error.response.status === 404) {
+        console.log(error.response);
         return dispatch({
           type: VERIFY_EMAIL_FAILURE,
           payload: "Your email cannot be validated.",
@@ -181,7 +161,6 @@ const AuthState = (props) => {
         verifyEmail,
         logout,
         clearErrors,
-        // validatePasscode,
       }}
     >
       {props.children}

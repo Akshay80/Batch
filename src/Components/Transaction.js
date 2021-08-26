@@ -7,8 +7,14 @@ import csv from "../images/csv.svg";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Transaction() {
-  const { feeRate, getFeeRate, getBalance, batchTransaction, uploadPercent } =
-    useContext(DashboardContext);
+  const {
+    feeRate,
+    getFeeRate,
+    getBalance,
+    batchTransaction,
+    isUploading,
+    uploadPercent,
+  } = useContext(DashboardContext);
 
   const userData = JSON.parse(localStorage.getItem("user"));
 
@@ -88,20 +94,19 @@ function Transaction() {
                     type="text"
                     className="form-control"
                     name="btcAddress"
-                    // placeholder="0x1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX"
                     defaultValue={userData.btcAddress}
                     disabled
                   />
                 </div>
 
-                <div className="form-group">
-                  <label
-                    htmlFor="exampleFormControlInput1"
-                    className="form-label"
-                    style={{ color: "black" }}
-                  >
-                    Comission Percent
-                  </label>
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                  style={{ color: "black" }}
+                >
+                  Comission Percent
+                </label>
+                <div class="input-group">
                   <select
                     className="form-select"
                     onChange={(e) =>
@@ -115,11 +120,20 @@ function Transaction() {
                     <option value="1">{userData.defixCommission}%</option>
                     <option value="1.5">{userData.externalCommission}%</option>
                   </select>
+                  <input
+                    type="image"
+                    src={info}
+                    data-bs-toggle="modal"
+                    width="38"
+                    style={{ border: "1px solid lightgrey", padding: 10 }}
+                    data-bs-target="#exampleModal2"
+                    alt="info2"
+                  />
                 </div>
 
                 <label
                   htmlFor="exampleFormControlInput1"
-                  className="form-label"
+                  className="form-label mt-3"
                   style={{ color: "black" }}
                 >
                   Select Fee Rate
@@ -156,15 +170,16 @@ function Transaction() {
                   />
                   <input
                     type="image"
-                    id="inputGroupFileAddon04"
-                    className="InfoImage"
                     src={info}
-                    alt="info"
-                    align="left"
+                    id="inputGroupFileAddon04"
                     data-bs-toggle="modal"
+                    width="38"
+                    style={{ border: "1px solid #0E73BC", padding: 10 }}
                     data-bs-target="#exampleModal"
+                    alt="info"
                   />
                 </div>
+                {/* CSV Modal */}
                 <p ref={fileAlert} className="text-danger mt-2"></p>
                 <div
                   className="modal fade "
@@ -198,13 +213,72 @@ function Transaction() {
                     </div>
                   </div>
                 </div>
+                {/* CSV Modal Ends Here */}
+
+                {/* Commission Rate Modal */}
+
+                <div
+                  class="modal fade"
+                  id="exampleModal2"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header border-0">
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 className="text-center">
+                          Important information regarding commission
+                        </h4>
+
+                        <h6 className="mt-4">
+                          1. <u>1% Commission:</u>
+                        </h6>
+                        <p>
+                          With 1.0% commission you can send batch transaction to
+                          defix wallets users only.
+                        </p>
+                        <h6 className="mt-4">
+                          2. <u>1.5% Commission:</u>
+                        </h6>
+
+                        <p>
+                          With 1.5% commission you can send batch transaction to
+                          any bitcoin address (external wallet or defix wallet
+                          user).
+                        </p>
+                      </div>
+                      <div class="modal-footer border-0">
+                        <button
+                          type="button"
+                          class="btn btn-secondary SendBtn"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comission Rate Modal Ends Here */}
+
                 <div className="form-group">
                   <button
                     type="submit"
                     className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
                     onClick={handleBatchTransaction}
+                    disabled={isUploading ? true : false}
                   >
-                    {uploadPercent ? `Uploading...${uploadPercent}%` : "Send"}
+                    {isUploading ? `Uploading...${uploadPercent}%` : "Send"}
                   </button>
                 </div>
               </form>
