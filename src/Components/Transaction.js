@@ -106,7 +106,7 @@ function Transaction() {
                 >
                   Comission Percent
                 </label>
-                <div class="input-group">
+                <div className="input-group">
                   <select
                     className="form-select"
                     onChange={(e) =>
@@ -218,23 +218,23 @@ function Transaction() {
                 {/* Commission Rate Modal */}
 
                 <div
-                  class="modal fade"
+                  className="modal fade"
                   id="exampleModal2"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header border-0">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header border-0">
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Close"
                         ></button>
                       </div>
-                      <div class="modal-body">
+                      <div className="modal-body">
                         <h4 className="text-center">
                           Important information regarding commission
                         </h4>
@@ -256,10 +256,10 @@ function Transaction() {
                           user).
                         </p>
                       </div>
-                      <div class="modal-footer border-0">
+                      <div className="modal-footer border-0">
                         <button
                           type="button"
-                          class="btn btn-secondary SendBtn"
+                          className="btn btn-secondary SendBtn"
                           data-bs-dismiss="modal"
                         >
                           Close

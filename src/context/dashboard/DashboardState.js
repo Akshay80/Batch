@@ -22,6 +22,7 @@ const DashboardState = (props) => {
     uploadPercent: 0,
     isUploading: false,
     isUploaded: false,
+    receipt: [],
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -119,6 +120,7 @@ const DashboardState = (props) => {
         uploadPercent: state.uploadPercent,
         isUploading: state.isUploading,
         isUploaded: state.isUploaded,
+        receipt: state.receipt,
         getFeeRate,
         getBalance,
         batchTransaction,

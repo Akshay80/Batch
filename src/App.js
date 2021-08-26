@@ -7,6 +7,7 @@ import VerifyEmail from "./Components/VerifyEmail";
 import Select from "./Components/Select";
 import Fail from "./Components/Fail";
 import Success from "./Components/Success";
+import Receipt from "./Components/Receipt";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -34,6 +35,7 @@ function App() {
               <PrivateRoute path="/batch-transaction" component={Transaction} />
               <PrivateRoute path="/success" component={Success} />
               <PrivateRoute path="/fail" component={Fail} />
+              <PrivateRoute path="/receipt" component={Receipt} />
             </Switch>
           </BrowserRouter>
         </DashboardState>
