@@ -18,6 +18,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AuthState from "./context/auth/AuthState";
 import DashboardState from "./context/dashboard/DashboardState";
+import Sample from "./Components/Sample";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={Splash} />
+              <Route path="/sample" component={Sample} />
               <Route path="/registration" component={Registration} />
               <Route path="/login" component={Login} />
               <Route path="/verifyEmail" component={VerifyEmailAlert} />
@@ -45,3 +47,4 @@ function App() {
 }
 
 export default App;
+

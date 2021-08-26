@@ -163,12 +163,12 @@ function Transaction() {
                   <input
                     type="file"
                     className="form-control"
-                    id="inputGroupFile04"
-                    aria-describedby="inputGroupFileAddon04"
+                    id="inputGroupFile"
+                    aria-describedby="inputGroupFileAddon"
                     required="required"
                     onChange={handleFileChange}
                   />
-                  <input
+                   <input
                     type="image"
                     src={info}
                     id="inputGroupFileAddon04"

@@ -10,7 +10,7 @@ function Splash() {
     <>
       {/* Header */}
       <Header />
-
+    
       <div className="container">
         <div className="row text-center">
           <div>

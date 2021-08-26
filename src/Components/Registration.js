@@ -4,6 +4,7 @@ import "../css/registration.css";
 import group from "../images/Group.png";
 import Header from "./Header";
 
+
 import AuthContext from "../context/auth/AuthContext";
 import VerifyEmailAlert from "./VerifyEmailAlert";
 
@@ -31,6 +32,21 @@ function Registration() {
   const handleChange = (e) => {
     clearErrors();
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    const password = document.querySelector('input[name=password]');
+    const confirm = document.querySelector('input[name=confirmPassword]');
+    
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } 
+  
+  else if(confirm.value === '')
+    {
+      confirm.setCustomValidity('Please fill in this field!');
+    }
+  
+  else {
+    confirm.setCustomValidity('Passwords do not match!');
+  }
   };
 
   const handleRegister = (e) => {
@@ -71,7 +87,7 @@ function Registration() {
                   className="signup-form mt-3  mb-5"
                   style={{ borderRadius: 7, borderColor: "#0E73BC" }}
                 >
-                  <form autoComplete="off">
+                  <form autoComplete="off" onSubmit={handleRegister}>
                     <h2>Registration</h2>
                     <div className="form-group">
                       <div className="row">
@@ -143,6 +159,7 @@ function Registration() {
                         value={formData.password}
                         onChange={handleChange}
                       />
+                      
                     </div>
                     <div className="form-group">
                       <label
@@ -166,6 +183,7 @@ function Registration() {
                         value={formData.confirmPassword}
                         onChange={handleChange}
                       />
+                     
                     </div>
                     <p className="text-danger">{register_error}</p>
                     <div className="form-group">
@@ -173,7 +191,6 @@ function Registration() {
                         type="submit"
                         className="btn btn-primary btn-lg btn-block d-block mx-auto mb-4 mt-4"
                         style={{ fontWeight: "bold", letterSpacing: 1 }}
-                        onClick={handleRegister}
                       >
                         {isLoading ? (
                           <>
