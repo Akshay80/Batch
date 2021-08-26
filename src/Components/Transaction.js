@@ -7,8 +7,14 @@ import csv from "../images/csv.svg";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Transaction() {
-  const { feeRate, getFeeRate, getBalance, batchTransaction, uploadPercent } =
-    useContext(DashboardContext);
+  const {
+    feeRate,
+    getFeeRate,
+    getBalance,
+    batchTransaction,
+    isUploading,
+    uploadPercent,
+  } = useContext(DashboardContext);
 
   const userData = JSON.parse(localStorage.getItem("user"));
 
@@ -270,8 +276,9 @@ function Transaction() {
                     type="submit"
                     className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
                     onClick={handleBatchTransaction}
+                    disabled={isUploading ? true : false}
                   >
-                    {uploadPercent ? `Uploading...${uploadPercent}%` : "Send"}
+                    {isUploading ? `Uploading...${uploadPercent}%` : "Send"}
                   </button>
                 </div>
               </form>

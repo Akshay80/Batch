@@ -24,7 +24,7 @@ function Sample() {
   
   <thead>
     <tr>
-      <th scope="col" style={{fontWeight:500, color:"#0E73BC"}}>Wallet ID</th>
+      <th scope="col" style={{fontWeight:500, color:"#0E73BC"}}>Bitcoin Address</th>
       <th scope="col" style={{fontWeight:500, color:"#0E73BC"}}>Amount</th>
       <th scope="col" style={{fontWeight:500, color:"#0E73BC"}}>Name</th>
       <th scope="col" style={{fontWeight:500, color:"#0E73BC"}}>Email</th>

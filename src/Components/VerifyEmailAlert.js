@@ -22,7 +22,7 @@ function VerifyEmailAlert() {
                 </div>
                 <h3 className="text-center mb-4">Verify Your Email First</h3>
                 <p className="text-center">
-                Email is not verified yet. Please check the inbox of email you used for registration, email may also be in spam folder
+                Email is not verified yet. Please check the inbox of email you used for registration, email may also be in spam folder.
                 </p>
               </form>
             </div>

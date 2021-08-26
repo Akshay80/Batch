@@ -7,6 +7,8 @@ import {
   GET_FEE_RATE_SUCCESS,
   GET_BALANCE_SUCCESS,
   SET_UPLOAD_PERCENT,
+  SET_UPLOADING_TRUE,
+  SET_UPLOADING_FALSE,
 } from "./types";
 import axios from "axios";
 
@@ -18,6 +20,7 @@ const DashboardState = (props) => {
     feeRate: [],
     balance: "",
     uploadPercent: 0,
+    isUploading: false,
     isUploaded: false,
   };
 
@@ -69,6 +72,7 @@ const DashboardState = (props) => {
   };
 
   const batchTransaction = async (formData) => {
+    dispatch({ type: SET_UPLOADING_TRUE });
     try {
       const { data } = await axios.post(
         baseURL + "/batch/batchTransaction",
@@ -89,16 +93,20 @@ const DashboardState = (props) => {
 
       if (data.success) {
         console.log(data);
+        dispatch({ type: SET_UPLOADING_FALSE });
       }
     } catch (error) {
       console.log(error.response.data);
       console.log(error.response.status);
       if (error.response.status === 400) {
         console.log(error.response.data.error);
+        dispatch({ type: SET_UPLOADING_FALSE });
       }
       if (error.response.status === 500) {
         console.log("Server Error");
+        dispatch({ type: SET_UPLOADING_FALSE });
       }
+      dispatch({ type: SET_UPLOADING_FALSE });
     }
   };
 
@@ -109,6 +117,7 @@ const DashboardState = (props) => {
         feeRate: state.feeRate,
         balance: state.balance,
         uploadPercent: state.uploadPercent,
+        isUploading: state.isUploading,
         isUploaded: state.isUploaded,
         getFeeRate,
         getBalance,

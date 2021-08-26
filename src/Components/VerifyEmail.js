@@ -91,7 +91,7 @@ const VerifyEmail = () => {
                   style={{ textDecoration: "none", color: "unset" }}
                 >
                   <button className="btn btn-outline-success btn-block text-center mx-auto d-block mt-5">
-                    Go to Login Page &#10142;
+                    Proceed to Login Page &#10142;
                   </button>
                 </Link>
               </form>
@@ -126,7 +126,7 @@ const VerifyEmail = () => {
                     />
                   </div>
                   <h3 className="text-center mb-4">
-                    Email Verification Failed!
+                    Email Verification Failed
                   </h3>
                   <p className="text-center">
                     Error! Your email cannot be verified.
@@ -138,7 +138,7 @@ const VerifyEmail = () => {
                     style={{ textDecoration: "none", color: "unset" }}
                   >
                     <button className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5">
-                      Go to Login Page &#10142;
+                      Proceed to Login Page &#10142;
                     </button>
                   </Link>
                 </form>
