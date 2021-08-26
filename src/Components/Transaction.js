@@ -118,7 +118,7 @@ function Transaction() {
                     type="image"
                     src={info}
                     data-bs-toggle="modal"
-                    width="45"
+                    width="38"
                     style={{ border: "1px solid lightgrey", padding: 10 }}
                     data-bs-target="#exampleModal2"
                     alt="info2"
@@ -157,20 +157,20 @@ function Transaction() {
                   <input
                     type="file"
                     className="form-control"
-                    id="inputGroupFile04"
-                    aria-describedby="inputGroupFileAddon04"
+                    id="inputGroupFile"
+                    aria-describedby="inputGroupFileAddon"
                     required="required"
                     onChange={handleFileChange}
                   />
-                  <input
+                   <input
                     type="image"
-                    id="inputGroupFileAddon04"
-                    className="InfoImage"
                     src={info}
-                    alt="info"
-                    align="left"
+                    id="inputGroupFileAddon04"
                     data-bs-toggle="modal"
+                    width="38"
+                    style={{ border: "1px solid #0E73BC", padding: 10 }}
                     data-bs-target="#exampleModal"
+                    alt="info"
                   />
                 </div>
                 {/* CSV Modal */}
