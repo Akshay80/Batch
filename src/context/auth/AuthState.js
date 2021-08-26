@@ -27,8 +27,6 @@ if (!localStorage.getItem("isAuth")) {
 const AuthState = (props) => {
   const baseURL = "http://walletapi.ftechiz.com:9090";
 
-  console.log("localStorage isAuth", localStorage.getItem("isAuth"));
-
   const initialState = {
     isLoading: false,
     isAuth: localStorage.user ? true : false,
@@ -57,8 +55,6 @@ const AuthState = (props) => {
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
-
-      console.log(data);
 
       if (data.success) {
         dispatch({ type: LOGIN_SUCCESS, payload: data });
@@ -99,8 +95,6 @@ const AuthState = (props) => {
         }
       );
 
-      console.log(data);
-
       if (data.success) {
         dispatch({ type: SHOW_VERIFY_EMAIL_ALERT });
         return;
@@ -109,7 +103,6 @@ const AuthState = (props) => {
       }
     } catch (error) {
       if (error.response.data.error) {
-        console.log(error.response.data.error);
         return dispatch({
           type: REGISTER_FAILURE,
           payload: error.response.data.error,
@@ -146,14 +139,21 @@ const AuthState = (props) => {
     setLoading();
     try {
       const { data } = await axios.get(baseURL + `/user/verifyEmail/${userId}`);
-      console.log(data);
+
       if (data.success) {
         dispatch({ type: VERIFY_EMAIL_SUCCESS, payload: data.message });
       } else {
         dispatch({ type: VERIFY_EMAIL_FAILURE, payload: data.error });
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      // console.log(error.response);
+      if (error.response.status === 404) {
+        return dispatch({
+          type: VERIFY_EMAIL_FAILURE,
+          payload: "Your email cannot be validated.",
+        });
+      }
       dispatch({
         type: VERIFY_EMAIL_FAILURE,
         payload: "Something went wrong.",
@@ -175,6 +175,7 @@ const AuthState = (props) => {
         showVerifyEmailAlert: state.showVerifyEmailAlert,
         isEmailVerified: state.isEmailVerified,
         success_msg: state.success_msg,
+        error_msg: state.error_msg,
         login,
         register,
         verifyEmail,

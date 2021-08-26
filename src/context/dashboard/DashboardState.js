@@ -6,6 +6,7 @@ import {
   SET_LOADING_TRUE,
   GET_FEE_RATE_SUCCESS,
   GET_BALANCE_SUCCESS,
+  SET_UPLOAD_PERCENT,
 } from "./types";
 import axios from "axios";
 
@@ -16,6 +17,8 @@ const DashboardState = (props) => {
     isLoading: false,
     feeRate: [],
     balance: "",
+    uploadPercent: 0,
+    isUploaded: false,
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -37,7 +40,7 @@ const DashboardState = (props) => {
           },
         }
       );
-      console.log(data);
+
       if (data.success) {
         dispatch({ type: GET_FEE_RATE_SUCCESS, payload: data.feeRate });
       }
@@ -45,6 +48,8 @@ const DashboardState = (props) => {
       console.log(error);
     }
   };
+
+  getFeeRate()
 
   const getBalance = async () => {
     try {
@@ -57,10 +62,7 @@ const DashboardState = (props) => {
         }
       );
 
-      console.log("balance", data);
-
       if (data.success) {
-        console.log("fee rate", data.feeRate);
         dispatch({ type: GET_BALANCE_SUCCESS, payload: data.feeRate });
       }
     } catch (error) {
@@ -78,15 +80,27 @@ const DashboardState = (props) => {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${user.jwtToken}`,
           },
+          onUploadProgress: (e) => {
+            dispatch({
+              type: SET_UPLOAD_PERCENT,
+              payload: parseInt(Math.round((e.loaded * 100) / e.total)),
+            });
+          },
         }
       );
-      console.log(data);
+
       if (data.success) {
         console.log(data);
       }
     } catch (error) {
-      console.log(error.response);
-      console.log(error);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      if (error.response.status === 400) {
+        console.log(error.response.data.error);
+      }
+      if (error.response.status === 500) {
+        console.log("Server Error");
+      }
     }
   };
 
@@ -96,6 +110,8 @@ const DashboardState = (props) => {
         isLoading: state.isLoading,
         feeRate: state.feeRate,
         balance: state.balance,
+        uploadPercent: state.uploadPercent,
+        isUploaded: state.isUploaded,
         getFeeRate,
         getBalance,
         batchTransaction,

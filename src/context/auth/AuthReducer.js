@@ -69,12 +69,14 @@ const AuthReducer = (state, action) => {
         ...state,
         isEmailVerified: true,
         success_msg: action.payload,
-        isLoading: false
+        isLoading: false,
       };
     case VERIFY_EMAIL_FAILURE:
       return {
         ...state,
         isEmailVerified: false,
+        error_msg: action.payload,
+        isLoading: false,
       };
     case LOGOUT:
       localStorage.clear();

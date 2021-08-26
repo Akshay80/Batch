@@ -17,8 +17,6 @@ function Login() {
     showVerifyEmailAlert,
   } = useContext(AuthContext);
 
-  console.log("state isAuth", isAuth);
-
   const [formdata, setFormData] = useState({
     email: "",
     password: "",
