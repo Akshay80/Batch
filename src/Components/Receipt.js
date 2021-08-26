@@ -4,6 +4,7 @@ import Header from "./Header";
 import success from "../images/success-icon.png";
 import failbox from "../images/Fail-box.png";
 import successbox from "../images/success-box.png";
+import fails from "../images/Fail icon.png";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
 
@@ -35,25 +36,34 @@ function Receipt() {
                   Batch Transition
                 </h2>
 
+
                 <img
-                  src={success}
-                  alt="success_image"
+                  src={fails}
+                  alt="fail_image"
                   className="d-block mx-auto mt-5"
                 />
 
+
+
+                {/* <img
+                  src={success}
+                  alt="success_image"
+                  className="d-block mx-auto mt-5"
+                /> */}
+
                 {/* Success Component */}
 
-                <img
+                {/* <img
                   src={successbox}
                   alt="success_box"
                   width="250px"
                   className="d-block mx-auto mt-5 failImage"
-                />
+                /> */}
 
-                <div className="container">
-                  <div className="card outerSuccessCard">
+                {/* <div className="container">
+                  <div className="card outerSuccessCard"> */}
                     {/* First Card (Txn ID, Amount, Fees, Confirmation) */}
-                    <div className="card innerCards1 mb-3">
+                    {/* <div className="card innerCards1 mb-3">
                       <div className="row">
                         <div className="col-sm">
                           <div className="input-group input-group-sm ">
@@ -127,13 +137,13 @@ function Receipt() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* First Card (TxnID, Amount, Fees, Confirmation) Ends Here */}
 
                     {/* Second Card (Address, Amount) */}
 
-                    <div className="card innerCards1 mb-1">
+                    {/* <div className="card innerCards1 mb-1">
                       <div className="row">
                         <div
                           className="input-group-text textboxTitle mb-3"
@@ -195,11 +205,11 @@ function Receipt() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Second Card (Address, Amount) ends here */}
-                  </div>
-                </div>
+                  {/* </div>
+                </div> */}
                 {/* Success Component Ends Here */}
 
                 {externalWallets.map(
