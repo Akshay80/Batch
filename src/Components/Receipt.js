@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/success.css";
 import Header from "./Header";
 import success from "../images/success-icon.png";
 import failbox from "../images/Fail-box.png";
 import successbox from "../images/success-box.png";
 
+import DashboardContext from "../context/dashboard/DashboardContext";
+
 function Receipt() {
+  const { receiptData } = useContext(DashboardContext);
+
+  console.log("RECEIPT_DATA", receiptData);
+
+  const { externalWallets } = receiptData;
+
   return (
     <>
-      {/* Header */}
       <Header />
-
       <div className="container">
         <div className="row">
           <div>
@@ -196,184 +202,104 @@ function Receipt() {
                 </div>
                 {/* Success Component Ends Here */}
 
-                {/* Fail Component */}
+                {externalWallets.map(
+                  ({ amount, name, bitcoinAddress, message, email }) => {
+                    return (
+                      <React.Fragment key={bitcoinAddress}>
+                        <img
+                          src={failbox}
+                          alt="success_box"
+                          width="250px"
+                          className="d-block mx-auto mt-5 failImage"
+                        />
+                        <div className="container">
+                          <div className="card outerfailureCard">
+                            <p>{message}</p>
+                            <div className="card innerCards1">
+                              <div className="row">
+                                <div className="col-sm col-lg-6 pb-3">
+                                  <div className="input-group input-group-sm ">
+                                    <span
+                                      className="input-group-text textboxSide"
+                                      id="basic-addon1"
+                                    >
+                                      Bitcoin Address
+                                    </span>
+                                    <input
+                                      type="text"
+                                      className="form-control rounded-start"
+                                      placeholder={bitcoinAddress}
+                                      disabled
+                                      aria-label="Username"
+                                      aria-describedby="basic-addon1"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm">
+                                  <div className="input-group input-group-sm ">
+                                    <span
+                                      className="input-group-text textboxSide"
+                                      id="basic-addon1"
+                                    >
+                                      Amount
+                                    </span>
+                                    <input
+                                      type="text"
+                                      className="form-control rounded-start"
+                                      placeholder={amount}
+                                      disabled
+                                      aria-label="Username"
+                                      aria-describedby="basic-addon1"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
 
-                <img
-                  src={failbox}
-                  alt="success_box"
-                  width="250px"
-                  className="d-block mx-auto mt-5 failImage"
-                />
-                <div className="container">
-                  <div className="card outerfailureCard">
-                    <div className="card innerCards1">
-                      <div className="row">
-                        <div className="col-sm col-lg-6 pb-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              Bitcoin Address
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="RandomWallet"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
+                              <div className="row">
+                                <div className="col-sm mt-3">
+                                  <div className="input-group input-group-sm ">
+                                    <span
+                                      className="input-group-text textboxSide"
+                                      id="basic-addon1"
+                                    >
+                                      &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <input
+                                      type="text"
+                                      className="form-control rounded-start"
+                                      placeholder={email}
+                                      disabled
+                                      aria-label="Username"
+                                      aria-describedby="basic-addon1"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm mt-3">
+                                  <div className="input-group input-group-sm ">
+                                    <span
+                                      className="input-group-text textboxSide"
+                                      id="basic-addon1"
+                                    >
+                                      &nbsp;Name&nbsp;&nbsp;
+                                    </span>
+                                    <input
+                                      type="text"
+                                      className="form-control rounded-start"
+                                      placeholder={name}
+                                      disabled
+                                      aria-label="Username"
+                                      aria-describedby="basic-addon1"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div className="col-sm">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              Amount
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="-995.45"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="col-sm mt-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="Random@#gmail.com"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-sm mt-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              &nbsp;Name&nbsp;&nbsp;
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="RandomName"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Fail Component Ends Here */}
-
-                {/* Fail Component */}
-                <img
-                  src={failbox}
-                  alt="success_box"
-                  width="250px"
-                  className="d-block mx-auto mt-5 failImage"
-                />
-
-                <div className="container">
-                  <div className="card outerfailureCard">
-                    <div className="card innerCards1 mb-1">
-                      <div className="row">
-                        <div className="col-sm pb-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              Wallet ID
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="RandomWallet"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-sm">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              Amount
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="-995.45"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="col-sm mt-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="Random@#gmail.com"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-sm mt-3">
-                          <div className="input-group input-group-sm ">
-                            <span
-                              className="input-group-text textboxSide"
-                              id="basic-addon1"
-                            >
-                              &nbsp;Name&nbsp;&nbsp;
-                            </span>
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="RandomName"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Fail Component Ends Here */}
+                      </React.Fragment>
+                    );
+                  }
+                )}
               </div>
             </div>
           </div>

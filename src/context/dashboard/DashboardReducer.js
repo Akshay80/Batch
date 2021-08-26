@@ -7,6 +7,8 @@ import {
   SET_UPLOADING_TRUE,
   SET_UPLOADING_FALSE,
   // GET_BALANCE_FAILURE,
+  SET_RECEIPT_DATA_SUCCESS,
+  SET_RECEIPT_DATA_FAILURE,
 } from "./types";
 
 const DashboardReducer = (state, action) => {
@@ -40,6 +42,19 @@ const DashboardReducer = (state, action) => {
       return {
         ...state,
         uploadPercent: 0,
+      };
+    case SET_RECEIPT_DATA_SUCCESS:
+      return {
+        ...state,
+        receiptData: action.payload,
+        showReceipt: true,
+      };
+    case SET_RECEIPT_DATA_FAILURE:
+      return {
+        ...state,
+        receiptData: [],
+        showReceipt: false,
+        receiptDataError: action.payload,
       };
     default:
       return state;

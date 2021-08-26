@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { Redirect } from "react-router-dom";
 import "../css/transaction.css";
 import Header from "./Header";
 import info from "../images/info.png";
@@ -14,7 +15,11 @@ function Transaction() {
     batchTransaction,
     isUploading,
     uploadPercent,
+    serverError,
+    showReceipt,
   } = useContext(DashboardContext);
+
+  console.log("showReceipt", showReceipt);
 
   const userData = JSON.parse(localStorage.getItem("user"));
 
@@ -68,6 +73,10 @@ function Transaction() {
       batchTransaction(fd);
     }
   };
+
+  if (showReceipt) {
+    return <Redirect to="/receipt" />;
+  }
 
   return (
     <>
@@ -168,7 +177,7 @@ function Transaction() {
                     required="required"
                     onChange={handleFileChange}
                   />
-                   <input
+                  <input
                     type="image"
                     src={info}
                     id="inputGroupFileAddon04"

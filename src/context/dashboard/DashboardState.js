@@ -9,6 +9,7 @@ import {
   SET_UPLOAD_PERCENT,
   SET_UPLOADING_TRUE,
   SET_UPLOADING_FALSE,
+  SET_RECEIPT_DATA_SUCCESS,
 } from "./types";
 import axios from "axios";
 
@@ -22,7 +23,8 @@ const DashboardState = (props) => {
     uploadPercent: 0,
     isUploading: false,
     isUploaded: false,
-    receipt: [],
+    showReceipt: false,
+    receiptData: [],
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -96,16 +98,28 @@ const DashboardState = (props) => {
         console.log(data);
         dispatch({ type: SET_UPLOADING_FALSE });
       }
+
+      if (!data.success) {
+        console.log("Success False");
+      }
     } catch (error) {
       console.log(error.response.data);
       console.log(error.response.status);
       if (error.response.status === 400) {
         console.log(error.response.data.error);
         dispatch({ type: SET_UPLOADING_FALSE });
+
+        if (error.response.data.externalWallets) {
+          console.log("SET_RECEIPT_DATA_SUCCESS");
+          dispatch({
+            type: SET_RECEIPT_DATA_SUCCESS,
+            payload: error.response.data,
+          });
+        }
       }
       if (error.response.status === 500) {
         console.log("Server Error");
-        dispatch({ type: SET_UPLOADING_FALSE });
+        return dispatch({ type: SET_UPLOADING_FALSE });
       }
       dispatch({ type: SET_UPLOADING_FALSE });
     }
@@ -120,7 +134,8 @@ const DashboardState = (props) => {
         uploadPercent: state.uploadPercent,
         isUploading: state.isUploading,
         isUploaded: state.isUploaded,
-        receipt: state.receipt,
+        showReceipt: state.showReceipt,
+        receiptData: state.receiptData,
         getFeeRate,
         getBalance,
         batchTransaction,
