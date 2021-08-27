@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
-import success from "../images/success-icon.png";
 import failbox from "../images/Fail-box.png";
-import successbox from "../images/success-box.png";
 import fails from "../images/Fail icon.png";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
@@ -40,14 +38,12 @@ function Receipt() {
                 <h2 className="card-title text-center cardTitle mb-2">
                   Batch Transition
                 </h2>
-                {/* 
+
                 <img
                   src={fails}
                   alt="fail_image"
                   className="d-block mx-auto mt-5"
                 />
-
-
 
                 {/* <img
                   src={success}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Redirect } from "react-router-dom";
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal } from "reactstrap";
 
 import "../css/transaction.css";
 import Header from "./Header";
@@ -10,7 +10,7 @@ import csv from "../images/csv.svg";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
 
-function Transaction() {
+const Transaction = (props) => {
   const {
     feeRate,
     getFeeRate,
@@ -18,11 +18,10 @@ function Transaction() {
     batchTransaction,
     isUploading,
     uploadPercent,
-    serverError,
     showReceipt,
   } = useContext(DashboardContext);
 
-  console.log("showReceipt", showReceipt);
+  const { className } = props;
 
   const userData = JSON.parse(localStorage.getItem("user"));
 
@@ -142,7 +141,7 @@ function Transaction() {
                     src={info}
                     data-bs-toggle="modal"
                     width="38"
-                    style={{ border: "1px solid lightgrey", padding: 10 }}
+                    style={{ border: "1px solid lightgrey", padding: 10, borderRadius: "0px 4px 4px 0px" }}
                     data-bs-target="#exampleModal2"
                     alt="info2"
                   />
@@ -191,9 +190,10 @@ function Transaction() {
                     id="inputGroupFileAddon04"
                     data-bs-toggle="modal"
                     width="38"
-                    style={{ border: "1px solid #0E73BC", padding: 10 }}
+                    style={{ border: "1px solid #0E73BC", padding: 10, borderRadius: "0px 4px 4px 0px"}}
                     data-bs-target="#exampleModal"
                     alt="info"
+                    
                   />
                 </div>
                 {/* CSV Modal */}
@@ -288,80 +288,42 @@ function Transaction() {
 
                 {/* Comission Rate Modal Ends Here */}
 
-                {/* 1.5% Modal Button */}
-
-                <button
-                  className="btn btn-primary btn-sm"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal3"
-                >
-                  Launch 1.5% commission modal{" "}
-                </button>
-
-                {/* 1.5% Modal Button Ends Here */}
-
                 {/* 1.5% Rate Modal */}
-
-                {/* {errorModal && (
-                  <div
-                    className="modal fade"
-                    id="exampleModal3"
-                    tabIndex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <div className="modal-header border-0">
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div className="modal-body">
-                          <h4 className="text-center">1.5% Commission</h4>
-
-                          <p className="text-center mt-4">
-                            Amount you want to send (including transaction fee)
-                            is greater than the total balance of your wallet.
-                          </p>
-                        </div>
-                        <div className="modal-footer border-0">
-                          <button
-                            type="button"
-                            className="btn btn-secondary SendBtn"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )} */}
-
-                {/* Modal */}
                 <div>
-                  <Modal isOpen={showModal} toggle={toggle} className="">
-                    <ModalHeader toggle={toggle}>Modal title</ModalHeader>
-                    <ModalBody>
-                      Amount you want to send(including transaction fee) is
-                      greater than the total balance of your wallet.
-                    </ModalBody>
-                    {/* <ModalFooter>
-                      <Button color="primary" onClick={toggle}>
-                        Do Something
-                      </Button>{" "}
-                      <Button color="secondary" onClick={toggle}>
-                        Cancel
-                      </Button>
-                    </ModalFooter> */}
+                  <Modal
+                    isOpen={showModal}
+                    toggle={toggle}
+                    className={className}
+                  >
+                    <div className="modal-header border-0">
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss={toggle}
+                        aria-label="Close"
+                        onClick={toggle}
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      <h4 className="text-center">1.5% Commission</h4>
+
+                      <p className="text-center mt-4">
+                        Amount you want to send (including transaction fee) is
+                        greater than the total balance of your wallet.
+                      </p>
+                    </div>
+                    <div className="modal-footer border-0">
+                      <button
+                        type="button"
+                        className="btn btn-secondary SendBtn"
+                        data-bs-dismiss={toggle}
+                        onClick={toggle}
+                      >
+                        Close
+                      </button>
+                    </div>
                   </Modal>
                 </div>
-                {/* Modal Ends */}
-
                 {/* 1.5% Rate Modal Ends Here */}
 
                 <div className="form-group">
@@ -381,6 +343,6 @@ function Transaction() {
       </div>
     </>
   );
-}
+};
 
 export default Transaction;

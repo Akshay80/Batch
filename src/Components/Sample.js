@@ -16,10 +16,10 @@ function Sample() {
                   borderColor: "#0E73BC",
                   padding: "25px",
                 }}>
-      <div class="table-responsive">
+      <div className="table-responsive">
       <h3 className="text-center mb-4" style={{color:"#0E73BC",fontSize:27, fontWeight: "500"}}>CSV Sample</h3>
         <p>This is the CSV file viewed as spread sheet:</p>
-        <table class="table table-bordered mb-5">
+        <table className="table table-bordered mb-5">
         
   
   <thead>

@@ -8,14 +8,10 @@ import check from "../images/check.png";
 import remove from "../images/remove.png";
 
 const VerifyEmail = () => {
-  const { isEmailVerified, verifyEmail, success_msg, error_msg } =
+  const { isEmailVerified, verifyEmail, error_msg } =
     useContext(AuthContext);
 
   const { base64Data } = useParams();
-
-  // const userId = JSON.parse(base64.decode(base64Data)).data.userId;
-
-  // console.log(userId);
 
   const [userId, setUserId] = useState("");
 
@@ -30,6 +26,7 @@ const VerifyEmail = () => {
     }
   };
 
+  console.log(userId);
   useEffect(() => {
     decodeBase64();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -57,60 +54,13 @@ const VerifyEmail = () => {
 
       {isEmailVerified && (
         <div className="container">
-        <div className="row no-gutters">
-          <div className="col-lg-12 col-md-12 col-sm">
-            <div
-              className="card verifyCard mt-5 d-block mx-auto"
-              style={{
-                borderRadius: 7,
-                borderColor: "green",
-                width: "50%",
-                padding: "25px",
-              }}
-            >
-              <form>
-                <div className="text-center">
-                  <img
-                    src={check}
-                    width="40px"
-                    height="40px"
-                    alt="check_logo"
-                    className="mb-4"
-                  />
-                </div>
-                <h3 className="text-center mb-4">
-                  Email Verification Success
-                </h3>
-                <p className="text-center">
-                  Congratulations! Your email has been verified successfully.
-                  Now you may proceed to Login page by clicking on Login
-                  button below.
-                </p>
-                <Link
-                  to="/login"
-                  style={{ textDecoration: "none", color: "unset" }}
-                >
-                  <button className="btn btn-outline-success btn-block text-center mx-auto d-block mt-5">
-                    Proceed to Login Page &#10142;
-                  </button>
-                </Link>
-              </form>
-            </div>
-          </div>
-        </div>
-        </div>
-      )}
-
-      {error_msg && (
-        <>
-         <div className="container">
           <div className="row no-gutters">
             <div className="col-lg-12 col-md-12 col-sm">
               <div
                 className="card verifyCard mt-5 d-block mx-auto"
                 style={{
                   borderRadius: 7,
-                  borderColor: "red",
+                  borderColor: "green",
                   width: "50%",
                   padding: "25px",
                 }}
@@ -118,26 +68,26 @@ const VerifyEmail = () => {
                 <form>
                   <div className="text-center">
                     <img
-                      src={remove}
+                      src={check}
                       width="40px"
                       height="40px"
-                      alt="remove_logo"
+                      alt="check_logo"
                       className="mb-4"
                     />
                   </div>
                   <h3 className="text-center mb-4">
-                    Email Verification Failed
+                    Email Verification Success
                   </h3>
                   <p className="text-center">
-                    Error! Your email cannot be verified.
-                    You can proceed to Login page by clicking on Login
+                    Congratulations! Your email has been verified successfully.
+                    Now you may proceed to Login page by clicking on Login
                     button below.
                   </p>
                   <Link
                     to="/login"
                     style={{ textDecoration: "none", color: "unset" }}
                   >
-                    <button className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5">
+                    <button className="btn btn-outline-success btn-block text-center mx-auto d-block mt-5">
                       Proceed to Login Page &#10142;
                     </button>
                   </Link>
@@ -145,6 +95,52 @@ const VerifyEmail = () => {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {error_msg && (
+        <>
+          <div className="container">
+            <div className="row no-gutters">
+              <div className="col-lg-12 col-md-12 col-sm">
+                <div
+                  className="card verifyCard mt-5 d-block mx-auto"
+                  style={{
+                    borderRadius: 7,
+                    borderColor: "red",
+                    width: "50%",
+                    padding: "25px",
+                  }}
+                >
+                  <form>
+                    <div className="text-center">
+                      <img
+                        src={remove}
+                        width="40px"
+                        height="40px"
+                        alt="remove_logo"
+                        className="mb-4"
+                      />
+                    </div>
+                    <h3 className="text-center mb-4">
+                      Email Verification Failed
+                    </h3>
+                    <p className="text-center">
+                      Error! Your email cannot be verified. You can proceed to
+                      Login page by clicking on Login button below.
+                    </p>
+                    <Link
+                      to="/login"
+                      style={{ textDecoration: "none", color: "unset" }}
+                    >
+                      <button className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5">
+                        Proceed to Login Page &#10142;
+                      </button>
+                    </Link>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       )}
