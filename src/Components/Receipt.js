@@ -4,6 +4,10 @@ import "../css/success.css";
 import Header from "./Header";
 import failbox from "../images/Fail-box.png";
 import fails from "../images/Fail icon.png";
+import success from "../images/success-icon.png";
+import successbox from "../images/success-box.png";
+
+import { successJSON } from "./successJSON";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
 
@@ -40,30 +44,24 @@ function Receipt() {
                 </h2>
 
                 <img
-                  src={fails}
-                  alt="fail_image"
-                  className="d-block mx-auto mt-5"
-                />
-
-                {/* <img
                   src={success}
                   alt="success_image"
                   className="d-block mx-auto mt-5"
-                /> */}
+                />
 
                 {/* Success Component */}
 
-                {/* <img
+                <img
                   src={successbox}
                   alt="success_box"
                   width="250px"
                   className="d-block mx-auto mt-5 failImage"
-                /> */}
+                />
 
-                {/* <div className="container">
-                  <div className="card outerSuccessCard"> */}
-                {/* First Card (Txn ID, Amount, Fees, Confirmation) */}
-                {/* <div className="card innerCards1 mb-3">
+                <div className="container">
+                  <div className="card outerSuccessCard">
+                    {/* First Card (Txn ID, Amount, Fees, Confirmation) */}
+                    <div className="card innerCards1 mb-3">
                       <div className="row">
                         <div className="col-sm">
                           <div className="input-group input-group-sm ">
@@ -76,7 +74,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder="f0d8dsk90sdksd9sdsd00asdsddsdsds9jkasdsd"
+                              placeholder={successJSON.transactionDetails.txid}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                             />
@@ -96,7 +94,9 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder="-995.45"
+                              placeholder={
+                                successJSON.transactionDetails.amount
+                              }
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                             />
@@ -113,7 +113,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder="-995.45"
+                              placeholder={successJSON.transactionDetails.fee}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                             />
@@ -130,86 +130,68 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder="0"
+                              placeholder={
+                                successJSON.transactionDetails.confirmations
+                              }
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                             />
                           </div>
                         </div>
                       </div>
-                    </div> */}
+                    </div>
 
-                {/* First Card (TxnID, Amount, Fees, Confirmation) Ends Here */}
+                    {/* First Card (TxnID, Amount, Fees, Confirmation) Ends Here */}
 
-                {/* Second Card (Address, Amount) */}
+                    {/* Second Card (Address, Amount) */}
 
-                {/* <div className="card innerCards1 mb-1">
-                      <div className="row">
-                        <div
-                          className="input-group-text textboxTitle mb-3"
-                          id="basic-addon1"
-                        >
-                          Address
-                        </div>
-                        <div className="col-lg-6 col-sm pb-3">
-                          <div className="input-group input-group-sm ">
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="Ravindra Nagar Rudrapur Udham singh nagar"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
+                    {successJSON.transactionDetails.details.map((item) => (
+                      <div className="card innerCards1 mb-3">
+                        <div className="row">
+                          <div
+                            className="input-group-text textboxTitle mb-3"
+                            id="basic-addon1"
+                          >
+                            Address
+                          </div>
+                          <div className="col-lg-12 col-sm pb-3">
+                            <div className="input-group input-group-sm ">
+                              <input
+                                type="text"
+                                className="form-control rounded-start"
+                                placeholder={item.address}
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                              />
+                            </div>
                           </div>
                         </div>
-                        <div className="col-sm">
-                          <div className="input-group input-group-sm ">
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="Ravindra Nagar Rudrapur Udham singh nagar"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
-                          </div>
-                        </div>
-                      </div>
 
-                      <div className="row">
-                        <div
-                          className="input-group-text textboxTitle mt-3"
-                          id="basic-addon1"
-                        >
-                          Amount
-                        </div>
-                        <div className="col-sm col-lg-6 mt-3">
-                          <div className="input-group input-group-sm ">
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="-0.998"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
+                        <div className="row">
+                          <div
+                            className="input-group-text textboxTitle mt-3"
+                            id="basic-addon1"
+                          >
+                            Amount
                           </div>
-                        </div>
-                        <div className="col-sm mt-3">
-                          <div className="input-group input-group-sm ">
-                            <input
-                              type="text"
-                              className="form-control rounded-start"
-                              placeholder="-0.9095"
-                              aria-label="Username"
-                              aria-describedby="basic-addon1"
-                            />
+                          <div className="col-sm col-lg-12 mt-3">
+                            <div className="input-group input-group-sm ">
+                              <input
+                                type="text"
+                                className="form-control rounded-start"
+                                placeholder={item.amount}
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div> */}
+                    ))}
 
-                {/* Second Card (Address, Amount) ends here */}
-                {/* </div>
-                </div> */}
+                    {/* Second Card (Address, Amount) ends here */}
+                  </div>
+                </div>
                 {/* Success Component Ends Here */}
 
                 {externalWallets.map(

@@ -97,6 +97,10 @@ const DashboardState = (props) => {
       if (data.success) {
         console.log(data);
         dispatch({ type: SET_UPLOADING_FALSE });
+        dispatch({
+          type: SET_RECEIPT_DATA_SUCCESS,
+          payload: data.transactionDetails,
+        });
       }
 
       if (!data.success) {
