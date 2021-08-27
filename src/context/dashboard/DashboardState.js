@@ -74,7 +74,7 @@ const DashboardState = (props) => {
     }
   };
 
-  const batchTransaction = async (formData) => {
+  const batchTransaction = async (formData, setShowModal) => {
     dispatch({ type: SET_UPLOADING_TRUE });
     try {
       const { data } = await axios.post(
@@ -118,6 +118,11 @@ const DashboardState = (props) => {
         }
       }
       if (error.response.status === 500) {
+        if (error.response.data.error) {
+          console.log("error", error.response.data.error);
+          setShowModal(true);
+        }
+
         console.log("Server Error");
         return dispatch({ type: SET_UPLOADING_FALSE });
       }

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Redirect } from "react-router-dom";
+
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
 import "../css/transaction.css";
 import Header from "./Header";
 import info from "../images/info.png";
@@ -70,8 +73,13 @@ function Transaction() {
       fd.set("file", formData.file);
       fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
 
-      batchTransaction(fd);
+      batchTransaction(fd, setShowModal);
     }
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const toggle = () => {
+    setShowModal(false);
   };
 
   if (showReceipt) {
@@ -154,8 +162,8 @@ function Transaction() {
                   }
                 >
                   <option value="">Select Fee Rate</option>
-                  {feeRate.map((item) => (
-                    <option key={item.feeRate} value={item.feeRate}>
+                  {feeRate.map((item, index) => (
+                    <option key={index} value={item.feeRate}>
                       {item.message} - {item.priority}
                     </option>
                   ))}
@@ -294,43 +302,65 @@ function Transaction() {
 
                 {/* 1.5% Rate Modal */}
 
-                <div
-                  className="modal fade"
-                  id="exampleModal3"
-                  tabIndex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header border-0">
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div className="modal-body">
-                        <h4 className="text-center">1.5% Commission</h4>
+                {/* {errorModal && (
+                  <div
+                    className="modal fade"
+                    id="exampleModal3"
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header border-0">
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div className="modal-body">
+                          <h4 className="text-center">1.5% Commission</h4>
 
-                        <p className="text-center mt-4">
-                          Amount you want to send (including transaction fee) is
-                          greater than the total balance of your wallet.
-                        </p>
-                      </div>
-                      <div className="modal-footer border-0">
-                        <button
-                          type="button"
-                          className="btn btn-secondary SendBtn"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
+                          <p className="text-center mt-4">
+                            Amount you want to send (including transaction fee)
+                            is greater than the total balance of your wallet.
+                          </p>
+                        </div>
+                        <div className="modal-footer border-0">
+                          <button
+                            type="button"
+                            className="btn btn-secondary SendBtn"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
+                )} */}
+
+                {/* Modal */}
+                <div>
+                  <Modal isOpen={showModal} toggle={toggle} className="">
+                    <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                    <ModalBody>
+                      Amount you want to send(including transaction fee) is
+                      greater than the total balance of your wallet.
+                    </ModalBody>
+                    {/* <ModalFooter>
+                      <Button color="primary" onClick={toggle}>
+                        Do Something
+                      </Button>{" "}
+                      <Button color="secondary" onClick={toggle}>
+                        Cancel
+                      </Button>
+                    </ModalFooter> */}
+                  </Modal>
                 </div>
+                {/* Modal Ends */}
 
                 {/* 1.5% Rate Modal Ends Here */}
 
