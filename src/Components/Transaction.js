@@ -40,7 +40,7 @@ const Transaction = (props) => {
   const fileAlert = useRef(null);
 
   const handleFileChange = (e) => {
-    if (e.target.files[0].type.split("/")[1] === "csv") {
+    if (e.target.files[0]?.type.split("/")[1] === "csv") {
       fileAlert.current.innerText = "";
       setFormData({ ...formData, file: e.target.files[0] });
     } else {
@@ -141,7 +141,11 @@ const Transaction = (props) => {
                     src={info}
                     data-bs-toggle="modal"
                     width="38"
-                    style={{ border: "1px solid lightgrey", padding: 10, borderRadius: "0px 4px 4px 0px" }}
+                    style={{
+                      border: "1px solid lightgrey",
+                      padding: 10,
+                      borderRadius: "0px 4px 4px 0px",
+                    }}
                     data-bs-target="#exampleModal2"
                     alt="info2"
                   />
@@ -190,10 +194,13 @@ const Transaction = (props) => {
                     id="inputGroupFileAddon04"
                     data-bs-toggle="modal"
                     width="38"
-                    style={{ border: "1px solid #0E73BC", padding: 10, borderRadius: "0px 4px 4px 0px"}}
+                    style={{
+                      border: "1px solid #0E73BC",
+                      padding: 10,
+                      borderRadius: "0px 4px 4px 0px",
+                    }}
                     data-bs-target="#exampleModal"
                     alt="info"
-                    
                   />
                 </div>
                 {/* CSV Modal */}
