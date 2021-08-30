@@ -1,7 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 
 import DashboardReducer from "./DashboardReducer";
 import DashboardContext from "./DashboardContext";
+
+import AuthContext from "../auth/AuthContext";
+
 import {
   SET_LOADING_TRUE,
   GET_FEE_RATE_SUCCESS,
@@ -11,9 +14,13 @@ import {
   SET_UPLOADING_FALSE,
   SET_RECEIPT_DATA_SUCCESS,
 } from "./types";
+
 import axios from "axios";
+import { LOGOUT } from "../auth/types";
 
 const DashboardState = (props) => {
+  const { logout } = useContext(AuthContext);
+
   const baseURL = "http://walletapi.ftechiz.com:9090";
 
   const initialState = {
@@ -38,7 +45,7 @@ const DashboardState = (props) => {
   const getFeeRate = async () => {
     setLoading();
     try {
-      const { data } = await axios.get(
+      const res = await axios.get(
         baseURL + `/batch/feeRate/${user.userData.id}`,
         {
           headers: {
@@ -47,10 +54,13 @@ const DashboardState = (props) => {
         }
       );
 
-      if (data.success) {
-        dispatch({ type: GET_FEE_RATE_SUCCESS, payload: data.feeRate });
+      if (res.data.success) {
+        dispatch({ type: GET_FEE_RATE_SUCCESS, payload: res.data.feeRate });
       }
     } catch (error) {
+      if (error?.response?.status === 403) {
+        logout();
+      }
       console.log(error);
     }
   };
