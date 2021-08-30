@@ -40,7 +40,7 @@ const Transaction = (props) => {
   const fileAlert = useRef(null);
 
   const handleFileChange = (e) => {
-    if (e.target.files[0].type.split("/")[1] === "csv") {
+    if (e.target.files[0]?.type.split("/")[1] === "csv") {
       fileAlert.current.innerText = "";
       setFormData({ ...formData, file: e.target.files[0] });
     } else {

@@ -73,9 +73,10 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder={successJSON.transactionDetails.txid}
+                              value={successJSON.transactionDetails.txid}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
+                              readOnly
                             />
                           </div>
                         </div>
@@ -93,11 +94,12 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder={
+                              defaultValue={
                                 successJSON.transactionDetails.amount
                               }
                               aria-label="Username"
                               aria-describedby="basic-addon1"
+                              readOnly
                             />
                           </div>
                         </div>
@@ -112,9 +114,10 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder={successJSON.transactionDetails.fee}
+                              value={successJSON.transactionDetails.fee}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
+                              readOnly
                             />
                           </div>
                         </div>
@@ -129,11 +132,12 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              placeholder={
+                              value={
                                 successJSON.transactionDetails.confirmations
                               }
                               aria-label="Username"
                               aria-describedby="basic-addon1"
+                              readOnly
                             />
                           </div>
                         </div>
@@ -151,16 +155,17 @@ function Receipt() {
                             className="input-group-text textboxTitle mb-3"
                             id="basic-addon1"
                           >
-                            Address
+                           Bitcoin Address
                           </div>
                           <div className="col-lg-12 col-sm pb-3">
                             <div className="input-group input-group-sm ">
                               <input
                                 type="text"
                                 className="form-control rounded-start"
-                                placeholder={item.address}
+                                value={item.address}
                                 aria-label="Username"
                                 aria-describedby="basic-addon1"
+                                readOnly
                               />
                             </div>
                           </div>
@@ -178,9 +183,10 @@ function Receipt() {
                               <input
                                 type="text"
                                 className="form-control rounded-start"
-                                placeholder={item.amount}
+                                value={item.amount}
                                 aria-label="Username"
                                 aria-describedby="basic-addon1"
+                                readOnly
                               />
                             </div>
                           </div>

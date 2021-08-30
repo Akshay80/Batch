@@ -16,7 +16,7 @@ import {
 } from "./types";
 
 import axios from "axios";
-import { LOGOUT } from "../auth/types";
+// import { LOGOUT } from "../auth/types";
 
 const DashboardState = (props) => {
   const { logout } = useContext(AuthContext);
