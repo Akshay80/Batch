@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
 import failbox from "../images/Fail-box.png";
-import fails from "../images/Fail icon.png";
 import success from "../images/success-icon.png";
 import successbox from "../images/success-box.png";
 
