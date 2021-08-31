@@ -1,32 +1,28 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500&display=swap');
-* 
-{
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
 }
-body
-{
-    background-color: #e5e5e5!important;
-    font-family: 'Jost', sans-serif!important;
+body {
+  background-color: #e5e5e5 !important;
+  font-family: "Jost", sans-serif !important;
 }
-.CardTitle{
-    color: #0E73BC;
-    font-size: 65px;
-    font-weight: 500;
-    text-align: left;
-    text-shadow: 1px 5px 2px lightgray!important;
-    letter-spacing: 2px;
+.CardTitle {
+  color: #0e73bc;
+  font-size: 65px;
+  font-weight: 500;
+  text-align: left;
+  text-shadow: 1px 5px 2px lightgray !important;
+  letter-spacing: 2px;
 }
-.CardTitle2{
-    color: #0E73BC;
-    font-size: 30px;
-    font-weight: 500;
-    text-align: left;
-    text-shadow: 1px 5px 2px lightgray!important;
+.CardTitle2 {
+  color: #0e73bc;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: left;
+  text-shadow: 1px 5px 2px lightgray !important;
 }
-.CardText{
-    text-align: left;
-    text-shadow: 0px 3px 3px gray !important;
-    line-height: 2;
+.CardText {
+  text-align: left;
+  line-height: 2;
 }
