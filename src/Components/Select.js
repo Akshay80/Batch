@@ -5,10 +5,12 @@ import Frenchise from "../images/Frenchise.png";
 import Regular from "../images/Regular.png";
 
 function Select() {
+
+
   return (
     <>
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
       <div className="container">
         <div className="card mt-5 ">
           <div className="card-body p-4 outercard">
@@ -20,7 +22,7 @@ function Select() {
 
                 <div className="row text-center">
                   <div className="col-sm-6">
-                    <img src={Regular} alt="regular_image" width="250px" />
+                    <img src={Regular} alt="regular_image" className="regular_button"/>
                     <div>
                       <a
                         href="/#"
@@ -31,7 +33,7 @@ function Select() {
                     </div>
                   </div>
                   <div className="col-sm-6">
-                    <img src={Frenchise} alt="frenchise_image" width="250px" />
+                    <img src={Frenchise} alt="frenchise_image" className="franchise_button"/>
                     <div>
                       <a
                         href="/#"

@@ -115,12 +115,12 @@ const Transaction = (props) => {
                   />
                 </div>
 
-                <label
+                {/* <label
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                   style={{ color: "black" }}
                 >
-                  Comission Percent
+                  Choose Your Comission Type
                 </label>
                 <div className="input-group">
                   <select
@@ -145,11 +145,12 @@ const Transaction = (props) => {
                     data-bs-target="#exampleModal2"
                     alt="info2"
                   />
-                </div>
+                </div> */}
+
 
                 <label
                   htmlFor="exampleFormControlInput1"
-                  className="form-label mt-3"
+                  className="form-label mt-2"
                   style={{ color: "black" }}
                 >
                   Select Fee Rate

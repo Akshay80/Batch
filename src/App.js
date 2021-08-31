@@ -8,6 +8,7 @@ import Select from "./Components/Select";
 import Fail from "./Components/Fail";
 import Success from "./Components/Success";
 import Receipt from "./Components/Receipt";
+import Dashboard from "./Components/Dashboard";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -27,7 +28,7 @@ function App() {
         <DashboardState>
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={Splash} />
+              <Route exact path="/" component={Dashboard} />
               <Route path="/sample" component={Sample} />
               <Route path="/registration" component={Registration} />
               <Route path="/login" component={Login} />
