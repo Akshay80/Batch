@@ -5,13 +5,14 @@ import Header from "./Header";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 const Dashboard = () => {
-  const { balance, getBalance } = useContext(DashboardContext);
+  const { balance, getBalance ,clearBatchTransactionCommissionPercent} = useContext(DashboardContext);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-    getBalance();
-  }, []);
+    clearBatchTransactionCommissionPercent();
+    getBalance(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
 
   return (
     // Header

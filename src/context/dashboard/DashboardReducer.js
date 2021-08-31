@@ -66,7 +66,7 @@ const DashboardReducer = (state, action) => {
     case CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT:
       return {
         ...state,
-        batchTransactionComissionPercent: "",
+        batchTransactionCommissionPercent: "",
       };
     default:
       return state;

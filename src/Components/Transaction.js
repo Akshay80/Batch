@@ -54,7 +54,7 @@ const Transaction = (props) => {
       fileReader.onload = () => {
         keys = fileReader.result.toString().split("\n")[0];
 
-        if (keys == "Bitcoin Address,Amount,Name,Email") {
+        if (keys === "Bitcoin Address,Amount,Name,Email") {
           fileAlert.current.innerText = "";
           setFormData({ ...formData, file: e.target.files[0] });
         } else {

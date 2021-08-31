@@ -14,6 +14,7 @@ import {
   SET_UPLOADING_FALSE,
   SET_RECEIPT_DATA_SUCCESS,
   SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
+  CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
 } from "./types";
 
 import axios from "axios";
@@ -50,6 +51,10 @@ const DashboardState = (props) => {
       payload: percent,
     });
   };
+
+  const clearBatchTransactionCommissionPercent = () => {
+    dispatch({type: CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT})
+  }
 
   const getFeeRate = async () => {
     setLoading();
@@ -170,6 +175,7 @@ const DashboardState = (props) => {
         getBalance,
         batchTransaction,
         setBatchTransactionComnissionPercent,
+        clearBatchTransactionCommissionPercent
       }}
     >
       {props.children}

@@ -3,7 +3,6 @@ import React, { useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 import "../css/select.css";
-import Header from "./Header";
 import Frenchise from "../images/Frenchise.png";
 import Regular from "../images/Regular.png";
 
