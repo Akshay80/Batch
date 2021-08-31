@@ -23,7 +23,7 @@ function Login() {
   });
 
   if (isAuth) {
-    return <Redirect to="/batch-transaction" />;
+    return <Redirect to="/dashboard" />;
   }
 
   const handleChange = (e) => {
@@ -80,7 +80,7 @@ function Login() {
                               <input
                                 type="email"
                                 name="email"
-                                className="form-control"   
+                                className="form-control"
                                 autoComplete="off"
                                 value={formdata.email}
                                 onChange={handleChange}

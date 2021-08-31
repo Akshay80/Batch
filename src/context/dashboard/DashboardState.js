@@ -16,7 +16,6 @@ import {
 } from "./types";
 
 import axios from "axios";
-import { LOGOUT } from "../auth/types";
 
 const DashboardState = (props) => {
   const { logout } = useContext(AuthContext);
@@ -32,6 +31,7 @@ const DashboardState = (props) => {
     isUploaded: false,
     showReceipt: false,
     receiptData: [],
+    batchTransactionComissionPercent: "",
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -155,6 +155,8 @@ const DashboardState = (props) => {
         isUploaded: state.isUploaded,
         showReceipt: state.showReceipt,
         receiptData: state.receiptData,
+        batchTransactionComissionPercent:
+          state.batchTransactionComissionPercent,
         getFeeRate,
         getBalance,
         batchTransaction,

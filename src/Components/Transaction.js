@@ -40,9 +40,29 @@ const Transaction = (props) => {
   const fileAlert = useRef(null);
 
   const handleFileChange = (e) => {
-    if (e.target.files[0]?.type.split("/")[1] === "csv") {
-      fileAlert.current.innerText = "";
-      setFormData({ ...formData, file: e.target.files[0] });
+    // Check if the file is of type csv.
+    if (
+      e.target.files[0]?.type.split("/")[1] === "csv" ||
+      e.target.files[0]?.type.split("/")[1] === "comma-separated-values"
+    ) {
+      // Check if the csv contains required fields.
+      const fileReader = new FileReader();
+
+      let keys = "";
+
+      fileReader.onload = () => {
+        keys = fileReader.result.toString().split("\n")[0];
+
+        if (keys == "Bitcoin Address,Amount,Name,Email") {
+          fileAlert.current.innerText = "";
+          setFormData({ ...formData, file: e.target.files[0] });
+        } else {
+          setFormData({ ...formData });
+          fileAlert.current.innerText = "CSV file error.";
+        }
+      };
+
+      fileReader.readAsText(e.target.files[0]);
     } else {
       setFormData({ ...formData });
       console.log("Not a valid file type");

@@ -8,6 +8,7 @@ import Select from "./Components/Select";
 import Fail from "./Components/Fail";
 import Success from "./Components/Success";
 import Receipt from "./Components/Receipt";
+import Dashboard from "./Components/Dashboard";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/verifyEmail" component={VerifyEmailAlert} />
               <Route path="/email_verify/:base64Data" component={VerifyEmail} />
+              <PrivateRoute path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/select" component={Select} />
               <PrivateRoute path="/batch-transaction" component={Transaction} />
               <PrivateRoute path="/success" component={Success} />
@@ -47,4 +49,3 @@ function App() {
 }
 
 export default App;
-

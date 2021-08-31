@@ -4,7 +4,6 @@ import "../css/registration.css";
 import group from "../images/Group.png";
 import Header from "./Header";
 
-
 import AuthContext from "../context/auth/AuthContext";
 import VerifyEmailAlert from "./VerifyEmailAlert";
 
@@ -26,27 +25,22 @@ function Registration() {
   });
 
   if (isAuth) {
-    return <Redirect to="/batch-transaction" />;
+    return <Redirect to="/dashboard" />;
   }
 
   const handleChange = (e) => {
     clearErrors();
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    const password = document.querySelector('input[name=password]');
-    const confirm = document.querySelector('input[name=confirmPassword]');
-    
-  if (confirm.value === password.value) {
-    confirm.setCustomValidity('');
-  } 
-  
-  else if(confirm.value === '')
-    {
-      confirm.setCustomValidity('Please fill in this field!');
+    const password = document.querySelector("input[name=password]");
+    const confirm = document.querySelector("input[name=confirmPassword]");
+
+    if (confirm.value === password.value) {
+      confirm.setCustomValidity("");
+    } else if (confirm.value === "") {
+      confirm.setCustomValidity("Please fill in this field!");
+    } else {
+      confirm.setCustomValidity("Passwords do not match!");
     }
-  
-  else {
-    confirm.setCustomValidity('Passwords do not match!');
-  }
   };
 
   const handleRegister = (e) => {
@@ -159,7 +153,6 @@ function Registration() {
                         value={formData.password}
                         onChange={handleChange}
                       />
-                      
                     </div>
                     <div className="form-group">
                       <label
@@ -183,7 +176,6 @@ function Registration() {
                         value={formData.confirmPassword}
                         onChange={handleChange}
                       />
-                     
                     </div>
                     <p className="text-danger">{register_error}</p>
                     <div className="form-group">
