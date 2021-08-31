@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+
+import { Redirect } from "react-router-dom";
+
 import "../css/select.css";
 import Header from "./Header";
 import Frenchise from "../images/Frenchise.png";
 import Regular from "../images/Regular.png";
 
+import DashboardContext from "../context/dashboard/DashboardContext";
+
 function Select() {
+  const {
+    batchTransactionCommissionPercent,
+    setBatchTransactionComnissionPercent,
+  } = useContext(DashboardContext);
+
+  console.log("commission percent", batchTransactionCommissionPercent);
+
+  useEffect(() => {
+    console.log(batchTransactionCommissionPercent);
+  }, [batchTransactionCommissionPercent]);
+
+  if (batchTransactionCommissionPercent) {
+    return <Redirect to="batch-transaction" />;
+  }
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleSelectTypeRegular = () => {
+    setBatchTransactionComnissionPercent(user.defixCommission);
+  };
+
+  const handleSelectTypeFranchise = () => {
+    setBatchTransactionComnissionPercent(user.externalCommission);
+  };
+
   return (
     <>
       {/* Header */}
-      <Header />
+      {/* <Header /> */}
       <div className="container">
         <div className="card mt-5 ">
           <div className="card-body p-4 outercard">
@@ -20,25 +50,33 @@ function Select() {
 
                 <div className="row text-center">
                   <div className="col-sm-6">
-                    <img src={Regular} alt="regular_image" width="250px" />
+                    <img
+                      src={Regular}
+                      alt="regular_image"
+                      className="regular_button"
+                    />
                     <div>
-                      <a
-                        href="/#"
+                      <button
                         className="btn btn-primary Buttons mt-3 mb-5"
+                        onClick={handleSelectTypeRegular}
                       >
                         &nbsp;Regular&nbsp;
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <div className="col-sm-6">
-                    <img src={Frenchise} alt="frenchise_image" width="250px" />
+                    <img
+                      src={Frenchise}
+                      alt="frenchise_image"
+                      className="franchise_button"
+                    />
                     <div>
-                      <a
-                        href="/#"
+                      <button
                         className="btn btn-primary Buttons mt-3 mb-5"
+                        onClick={handleSelectTypeFranchise}
                       >
                         Franchise
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -19,6 +19,7 @@ const Transaction = (props) => {
     isUploading,
     uploadPercent,
     showReceipt,
+    batchTransactionCommissionPercent,
   } = useContext(DashboardContext);
 
   const { className } = props;
@@ -75,9 +76,9 @@ const Transaction = (props) => {
 
     const errors = [];
 
-    if (formData.commissionPercent === "") {
-      errors.push(1);
-    }
+    // if (formData.commissionPercent === "") {
+    //   errors.push(1);
+    // }
     if (formData.feeRate === "") {
       errors.push(1);
     }
@@ -85,9 +86,16 @@ const Transaction = (props) => {
       errors.push(1);
     }
 
+    if (batchTransactionCommissionPercent === "") {
+      errors.push(1);
+    }
+
+    console.log(errors);
+    console.log("p", batchTransactionCommissionPercent);
+
     if (errors.length === 0) {
       const fd = new FormData();
-      fd.set("commissionPercent", formData.commissionPercent);
+      fd.set("commissionPercent", batchTransactionCommissionPercent);
       fd.set("feeRate", formData.feeRate);
       fd.set("file", formData.file);
       fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
@@ -100,6 +108,10 @@ const Transaction = (props) => {
   const toggle = () => {
     setShowModal(false);
   };
+
+  if (!batchTransactionCommissionPercent) {
+    return <Redirect to="/select" />;
+  }
 
   if (showReceipt) {
     return <Redirect to="/receipt" />;
@@ -135,12 +147,12 @@ const Transaction = (props) => {
                   />
                 </div>
 
-                <label
+                {/* <label
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                   style={{ color: "black" }}
                 >
-                  Comission Percent
+                  Choose Your Comission Type
                 </label>
                 <div className="input-group">
                   <select
@@ -169,11 +181,11 @@ const Transaction = (props) => {
                     data-bs-target="#exampleModal2"
                     alt="info2"
                   />
-                </div>
+                </div> */}
 
                 <label
                   htmlFor="exampleFormControlInput1"
-                  className="form-label mt-3"
+                  className="form-label mt-2"
                   style={{ color: "black" }}
                 >
                   Select Fee Rate

@@ -13,6 +13,7 @@ import {
   SET_UPLOADING_TRUE,
   SET_UPLOADING_FALSE,
   SET_RECEIPT_DATA_SUCCESS,
+  SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
 } from "./types";
 
 import axios from "axios";
@@ -31,7 +32,7 @@ const DashboardState = (props) => {
     isUploaded: false,
     showReceipt: false,
     receiptData: [],
-    batchTransactionComissionPercent: "",
+    batchTransactionCommissionPercent: "",
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -40,6 +41,14 @@ const DashboardState = (props) => {
 
   const setLoading = () => {
     dispatch({ type: SET_LOADING_TRUE });
+  };
+
+  const setBatchTransactionComnissionPercent = (percent) => {
+    console.log("selected percent", percent);
+    dispatch({
+      type: SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
+      payload: percent,
+    });
   };
 
   const getFeeRate = async () => {
@@ -77,7 +86,7 @@ const DashboardState = (props) => {
       );
 
       if (data.success) {
-        dispatch({ type: GET_BALANCE_SUCCESS, payload: data.feeRate });
+        dispatch({ type: GET_BALANCE_SUCCESS, payload: data.balance });
       }
     } catch (error) {
       console.log(error);
@@ -155,11 +164,12 @@ const DashboardState = (props) => {
         isUploaded: state.isUploaded,
         showReceipt: state.showReceipt,
         receiptData: state.receiptData,
-        batchTransactionComissionPercent:
-          state.batchTransactionComissionPercent,
+        batchTransactionCommissionPercent:
+          state.batchTransactionCommissionPercent,
         getFeeRate,
         getBalance,
         batchTransaction,
+        setBatchTransactionComnissionPercent,
       }}
     >
       {props.children}

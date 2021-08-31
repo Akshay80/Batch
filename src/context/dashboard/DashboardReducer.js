@@ -9,6 +9,8 @@ import {
   // GET_BALANCE_FAILURE,
   SET_RECEIPT_DATA_SUCCESS,
   SET_RECEIPT_DATA_FAILURE,
+  SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
+  CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
 } from "./types";
 
 const DashboardReducer = (state, action) => {
@@ -55,6 +57,16 @@ const DashboardReducer = (state, action) => {
         receiptData: [],
         showReceipt: false,
         receiptDataError: action.payload,
+      };
+    case SET_BATCH_TRANSACTION_COMMISSION_PERCENT:
+      return {
+        ...state,
+        batchTransactionCommissionPercent: action.payload,
+      };
+    case CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT:
+      return {
+        ...state,
+        batchTransactionComissionPercent: "",
       };
     default:
       return state;

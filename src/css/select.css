@@ -19,7 +19,7 @@ body {
   border: 1px solid #0e73bc;
   border-radius: 2px;
   padding: 40px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .innercard {
@@ -32,10 +32,46 @@ body {
   color: #fff !important;
   outline: none !important;
   border-radius: 50px !important;
-  width: 250px;
+  /* width: 250px; */
 }
 .Buttons:hover {
   background-color: #0e73bc;
   color: #fff;
   outline: none !important;
+}
+
+.regular_button {
+  width: 250px;
+}
+.franchise_button {
+  width: 250px;
+}
+
+@media (max-width: 997px) and (min-width: 575px) {
+  .regular_button {
+    width: 100%;
+  }
+  .franchise_button {
+    width: 100%;
+  }
+  .title
+  {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 460px) 
+{
+  .regular_button {
+    width: 100%;
+  }
+  .franchise_button {
+    width: 100%;
+  }
+  .title{
+    font-size: 15px;
+  }
+  .signup-form .btn{
+    min-width: unset;
+  }
 }
