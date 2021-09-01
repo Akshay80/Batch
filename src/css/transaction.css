@@ -87,10 +87,6 @@ body {
   .franchise_button {
     width: 100%;
   }
-  .title
-  {
-    font-size: 18px;
-  }
 }
 
 @media (max-width: 460px) 
@@ -102,7 +98,7 @@ body {
     width: 100%;
   }
   .title{
-    font-size: 15px;
+    font-size: 23px;
   }
   .signup-form .btn{
     min-width: unset;

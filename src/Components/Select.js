@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { Redirect } from "react-router-dom";
-
+import Header from "./Header";
 import "../css/select.css";
 import Frenchise from "../images/Frenchise.png";
 import Regular from "../images/Regular.png";
@@ -36,8 +36,8 @@ function Select() {
 
   return (
     <>
-      {/* Header */}
-      {/* <Header /> */}
+     {/* Header */}
+      <Header />
       <div className="container">
         <div className="card mt-5 ">
           <div className="card-body p-4 outercard">
