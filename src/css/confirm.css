@@ -1,0 +1,23 @@
+@media(max-width: 991px)
+{
+    .ConfirmCard
+    {
+        width: 70%!important;
+    }
+}
+
+@media(max-width: 768px)
+{
+    .ConfirmCard
+    {
+        width: 80%!important;
+    }
+}
+
+@media(max-width: 362px)
+{
+    .ConfirmCard
+    {
+        width: 90%!important;
+    }
+}

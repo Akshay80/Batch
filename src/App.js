@@ -9,6 +9,7 @@ import Fail from "./Components/Fail";
 import Success from "./Components/Success";
 import Receipt from "./Components/Receipt";
 import Dashboard from "./Components/Dashboard";
+import Confirm from "./Components/Confirm";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -30,6 +31,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Splash} />
               <Route path="/sample" component={Sample} />
+              <Route path="/confirm-payment" component={Confirm}/>
               <Route path="/registration" component={Registration} />
               <Route path="/login" component={Login} />
               <Route path="/verifyEmail" component={VerifyEmailAlert} />
