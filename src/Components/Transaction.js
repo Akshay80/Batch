@@ -20,7 +20,11 @@ const Transaction = (props) => {
     uploadPercent,
     showReceipt,
     batchTransactionCommissionPercent,
+    showConfirmPayment,
+    setShowConfirmPayment,
   } = useContext(DashboardContext);
+
+  console.log("btcp", batchTransactionCommissionPercent);
 
   const { className } = props;
 
@@ -37,6 +41,8 @@ const Transaction = (props) => {
     file: null,
     userId: "",
   });
+
+  const [BTFD, setBTFD] = useState();
 
   const fileAlert = useRef(null);
 
@@ -80,14 +86,14 @@ const Transaction = (props) => {
     //   errors.push(1);
     // }
     if (formData.feeRate === "") {
-      errors.push(1);
+      errors.push("fee rate error");
     }
     if (formData.file === null) {
-      errors.push(1);
+      errors.push("file error");
     }
 
     if (batchTransactionCommissionPercent === "") {
-      errors.push(1);
+      errors.push("commission percent error");
     }
 
     console.log(errors);
@@ -100,7 +106,32 @@ const Transaction = (props) => {
       fd.set("file", formData.file);
       fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
 
-      batchTransaction(fd, setShowModal);
+      // setBTFD(fd);
+
+      // batchTransaction(fd, setShowModal);
+
+      // setShowConfirmPayment();
+
+      props.history.push({
+        pathname: "/confirm-payment",
+        state: {
+          commissionPercent: batchTransactionCommissionPercent,
+          feeRate: formData.feeRate,
+          file: formData.file,
+          userId: JSON.parse(localStorage.getItem("user")).userData.id,
+        },
+      });
+
+      // return (
+      //   <Redirect
+      //     to={{
+      //       pathname: "/confirm-payment",
+      //       state: {
+      //         batchTransaction: () => batchTransaction(fd, setShowModal),
+      //       },
+      //     }}
+      //   />
+      // );
     }
   };
 
@@ -108,6 +139,15 @@ const Transaction = (props) => {
   const toggle = () => {
     setShowModal(false);
   };
+
+  console.log("show confirm payment", showConfirmPayment);
+
+  // if (showConfirmPayment) {
+  //   props.history.push({
+  //     pathname: "/confirm-payment",
+  //     state: BTFD,
+  //   });
+  // }
 
   if (!batchTransactionCommissionPercent) {
     return <Redirect to="/select" />;

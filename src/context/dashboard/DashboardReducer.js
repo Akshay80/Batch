@@ -11,6 +11,8 @@ import {
   SET_RECEIPT_DATA_FAILURE,
   SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
   CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
+  SET_SHOW_CONFIRM_PAYMENT_TRUE,
+  SET_SHOW_CONFIRM_PAYMENT_FALSE,
 } from "./types";
 
 const DashboardReducer = (state, action) => {
@@ -67,6 +69,17 @@ const DashboardReducer = (state, action) => {
       return {
         ...state,
         batchTransactionCommissionPercent: "",
+      };
+    case SET_SHOW_CONFIRM_PAYMENT_TRUE:
+      console.log("SET_SHOW_CONFIRM_PAYMENT_TRUE");
+      return {
+        ...state,
+        showConfirmPayment: true,
+      };
+    case SET_SHOW_CONFIRM_PAYMENT_FALSE:
+      return {
+        ...state,
+        showConfirmPayment: false,
       };
     default:
       return state;

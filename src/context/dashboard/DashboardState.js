@@ -15,6 +15,8 @@ import {
   SET_RECEIPT_DATA_SUCCESS,
   SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
   CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
+  SET_SHOW_CONFIRM_PAYMENT_TRUE,
+  SET_SHOW_CONFIRM_PAYMENT_FALSE,
 } from "./types";
 
 import axios from "axios";
@@ -34,6 +36,7 @@ const DashboardState = (props) => {
     showReceipt: false,
     receiptData: [],
     batchTransactionCommissionPercent: "",
+    showConfirmPayment: false,
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -53,8 +56,8 @@ const DashboardState = (props) => {
   };
 
   const clearBatchTransactionCommissionPercent = () => {
-    dispatch({type: CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT})
-  }
+    dispatch({ type: CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT });
+  };
 
   const getFeeRate = async () => {
     setLoading();
@@ -98,7 +101,12 @@ const DashboardState = (props) => {
     }
   };
 
-  const batchTransaction = async (formData, setShowModal) => {
+  const setShowConfirmPayment = () => {
+    console.log("setShowConfirmPayment State");
+    dispatch({ type: SET_SHOW_CONFIRM_PAYMENT_TRUE });
+  };
+
+  const batchTransaction = async (formData, history) => {
     dispatch({ type: SET_UPLOADING_TRUE });
     try {
       const { data } = await axios.post(
@@ -148,7 +156,8 @@ const DashboardState = (props) => {
       if (error.response.status === 500) {
         if (error.response.data.error) {
           console.log("error", error.response.data.error);
-          setShowModal(true);
+          // setShowModal(true);
+          history.push("/dashboard");
         }
 
         console.log("Server Error");
@@ -171,11 +180,13 @@ const DashboardState = (props) => {
         receiptData: state.receiptData,
         batchTransactionCommissionPercent:
           state.batchTransactionCommissionPercent,
+        showConfirmPayment: state.showConfirmPayment,
         getFeeRate,
         getBalance,
         batchTransaction,
         setBatchTransactionComnissionPercent,
-        clearBatchTransactionCommissionPercent
+        clearBatchTransactionCommissionPercent,
+        setShowConfirmPayment,
       }}
     >
       {props.children}
