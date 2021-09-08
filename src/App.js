@@ -10,6 +10,7 @@ import Success from "./Components/Success";
 import Receipt from "./Components/Receipt";
 import Dashboard from "./Components/Dashboard";
 import Confirm from "./Components/Confirm";
+import Error from "./Components/Error";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/sample" component={Sample} />
               <Route path="/confirm-payment" component={Confirm}/>
               <Route path="/registration" component={Registration} />
+              <Route path="/error" component={Error} />
               <Route path="/login" component={Login} />
               <Route path="/verifyEmail" component={VerifyEmailAlert} />
               <Route path="/email_verify/:base64Data" component={VerifyEmail} />
