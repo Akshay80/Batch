@@ -8,8 +8,7 @@ import check from "../images/check.png";
 import remove from "../images/remove.png";
 
 const VerifyEmail = () => {
-  const { isEmailVerified, verifyEmail, error_msg } =
-    useContext(AuthContext);
+  const { isEmailVerified, verifyEmail, error_msg } = useContext(AuthContext);
 
   const { base64Data } = useParams();
 
@@ -22,11 +21,11 @@ const VerifyEmail = () => {
       verifyEmail(id);
     } catch (error) {
       verifyEmail();
-      console.log(error);
+      //console.log(error);
     }
   };
 
-  console.log(userId);
+  //console.log(userId);
   useEffect(() => {
     decodeBase64();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

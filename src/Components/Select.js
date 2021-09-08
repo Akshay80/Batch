@@ -14,10 +14,10 @@ function Select() {
     setBatchTransactionComnissionPercent,
   } = useContext(DashboardContext);
 
-  console.log("commission percent", batchTransactionCommissionPercent);
+  //console.log("commission percent", batchTransactionCommissionPercent);
 
   useEffect(() => {
-    console.log(batchTransactionCommissionPercent);
+    //console.log(batchTransactionCommissionPercent);
   }, [batchTransactionCommissionPercent]);
 
   if (batchTransactionCommissionPercent) {
@@ -36,7 +36,7 @@ function Select() {
 
   return (
     <>
-     {/* Header */}
+      {/* Header */}
       <Header />
       <div className="container">
         <div className="card mt-5 ">

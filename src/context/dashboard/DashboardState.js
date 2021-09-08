@@ -50,7 +50,7 @@ const DashboardState = (props) => {
   };
 
   const setBatchTransactionComnissionPercent = (percent) => {
-    console.log("selected percent", percent);
+    //console.log("selected percent", percent);
     dispatch({
       type: SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
       payload: percent,
@@ -80,7 +80,7 @@ const DashboardState = (props) => {
       if (error?.response?.status === 403) {
         logout();
       }
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -99,17 +99,17 @@ const DashboardState = (props) => {
         dispatch({ type: GET_BALANCE_SUCCESS, payload: data.balance });
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
   const setShowConfirmPayment = () => {
-    console.log("setShowConfirmPayment State");
+    //console.log("setShowConfirmPayment State");
     dispatch({ type: SET_SHOW_CONFIRM_PAYMENT_TRUE });
   };
 
   const confirmPayment = async (formData, history) => {
-    console.log("Confirm Payment");
+    //console.log("Confirm Payment");
     dispatch({ type: SET_UPLOADING_TRUE });
     try {
       const { data } = await axios.post(
@@ -131,32 +131,39 @@ const DashboardState = (props) => {
 
       if (data.success) {
         dispatch({ type: SET_CONFIRM_PAYMENT_DATA, payload: data.paymentInfo });
-        history.push("/confirm-payment");
+
+        history.push({
+          pathname: "/confirm-payment",
+          state: { feeRate: formData.get("feeRate") },
+        });
       }
     } catch (error) {
-      console.log(error.response);
-      console.log(error.response.status);
-      if (error.response.status === 400) {
-        console.log(error.response.data.error);
+      //console.log(error.response);
+
+      if (error.response?.status === 400) {
+        //console.log(error.response.data.error);
         dispatch({ type: SET_UPLOADING_FALSE });
 
         if (error.response.data.externalWallets) {
-          console.log("SET_RECEIPT_DATA_SUCCESS");
+          //console.log("SET_RECEIPT_DATA_SUCCESS");
           dispatch({
             type: SET_CONFIRM_PAYMENT_DATA,
             payload: error.response.data,
           });
-          history.push("/confirm-payment");
+          history.push({
+            pathname: "/confirm-payment",
+            state: { feeRate: formData.get("feeRate") },
+          });
         }
       }
-      if (error.response.status === 500) {
+      if (error.response?.status === 500) {
         if (error.response.data.error) {
-          console.log("error", error.response.data.error);
+          //console.log("error", error.response.data.error);
           // setShowModal(true);
           // history.push("/dashboard");
         }
 
-        console.log("Server Error");
+        //console.log("Server Error");
         return dispatch({ type: SET_UPLOADING_FALSE });
       }
       dispatch({ type: SET_UPLOADING_FALSE });
@@ -184,7 +191,7 @@ const DashboardState = (props) => {
   //     );
 
   //     if (data.success) {
-  //       console.log(data);
+  //       //console.log(data);
   //       dispatch({ type: SET_UPLOADING_FALSE });
   //       dispatch({
   //         type: SET_RECEIPT_DATA_SUCCESS,
@@ -193,19 +200,19 @@ const DashboardState = (props) => {
   //     }
 
   //     if (!data.success) {
-  //       console.log("Success False");
+  //       //console.log("Success False");
   //     }
   //     if (data.success) {
   //     }
   //   } catch (error) {
-  //     console.log(error.response.data);
-  //     console.log(error.response.status);
+  //     //console.log(error.response.data);
+  //     //console.log(error.response.status);
   //     if (error.response.status === 400) {
-  //       console.log(error.response.data.error);
+  //       //console.log(error.response.data.error);
   //       dispatch({ type: SET_UPLOADING_FALSE });
 
   //       if (error.response.data.externalWallets) {
-  //         console.log("SET_RECEIPT_DATA_SUCCESS");
+  //         //console.log("SET_RECEIPT_DATA_SUCCESS");
   //         dispatch({
   //           type: SET_RECEIPT_DATA_SUCCESS,
   //           payload: error.response.data,
@@ -214,12 +221,12 @@ const DashboardState = (props) => {
   //     }
   //     if (error.response.status === 500) {
   //       if (error.response.data.error) {
-  //         console.log("error", error.response.data.error);
+  //         //console.log("error", error.response.data.error);
   //         // setShowModal(true);
   //         history.push("/dashboard");
   //       }
 
-  //       console.log("Server Error");
+  //       //console.log("Server Error");
   //       return dispatch({ type: SET_UPLOADING_FALSE });
   //     }
   //     dispatch({ type: SET_UPLOADING_FALSE });
@@ -233,38 +240,40 @@ const DashboardState = (props) => {
   //     if (data.success) {
   //     }
   //   } catch (error) {
-  //     console.log(error);
+  //     //console.log(error);
   //   }
   // };
 
-  const batchTransaction = async () => {
-    const body = {
-      commission: 0,
-      feeRate: 0,
-      receivers: [
-        {
-          amount: 0,
-          btcAddress: "string",
-          email: "string",
-          name: "string",
-        },
-      ],
-      userId: "string",
-    };
-
+  const batchTransaction = async (body, history) => {
     try {
       const { data } = await axios.post(
         baseURL + "/batch/confirmPayment",
         body,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${user.jwtToken}`,
           },
         }
       );
+
+      //console.log(data);
     } catch (error) {
-      console.log(error);
+      // //console.log(error.response.data);
+      // //console.log(error);
+      //console.log(error.response.data.success);
+      if (error.response.status === 500) {
+        if (error.response.data.success === false) {
+          // history.replace("/xyz");
+
+          history.replace({
+            pathname: "/error",
+            state: { error: error.response.data.error },
+          });
+        }
+
+        //console.log(error.response.data);
+      }
     }
   };
 

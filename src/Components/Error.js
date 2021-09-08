@@ -2,7 +2,11 @@ import React from "react";
 import err from "../images/error.png";
 import { Link } from "react-router-dom";
 
-const Error = () => {
+const Error = (props) => {
+  //console.log("...........................", props.location.state);
+
+  const { error } = props.location.state;
+
   return (
     <React.Fragment>
       <div className="container">
@@ -31,17 +35,22 @@ const Error = () => {
                   Payment Error
                 </h3>
                 <p className="text-center" style={{ letterSpacing: 1 }}>
-                  Amount you want to send(including transaction fee) is greater
-                  than the total balance of your wallet.
+                  {error}
                 </p>
-                <Link
+                {/* <Link
                   to="/batch-transaction"
                   style={{ textDecoration: "none", color: "unset" }}
+                > */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    props.history.replace("/dashboard");
+                  }}
+                  className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5"
                 >
-                  <button className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5">
-                    Proceed to Batch Transaction Page &#10142;
-                  </button>
-                </Link>
+                  Proceed to Batch Transaction Page &#10142;
+                </button>
+                {/* </Link> */}
               </form>
             </div>
           </div>

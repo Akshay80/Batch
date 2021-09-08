@@ -25,7 +25,7 @@ const Transaction = (props) => {
     confirmPayment,
   } = useContext(DashboardContext);
 
-  console.log("btcp", batchTransactionCommissionPercent);
+  //console.log("btcp", batchTransactionCommissionPercent);
 
   const { className } = props;
 
@@ -73,7 +73,7 @@ const Transaction = (props) => {
       fileReader.readAsText(e.target.files[0]);
     } else {
       setFormData({ ...formData });
-      console.log("Not a valid file type");
+      //console.log("Not a valid file type");
       fileAlert.current.innerText = "Not a valid file type.";
     }
   };
@@ -97,8 +97,8 @@ const Transaction = (props) => {
       errors.push("commission percent error");
     }
 
-    console.log(errors);
-    console.log("p", batchTransactionCommissionPercent);
+    //console.log(errors);
+    //console.log("p", batchTransactionCommissionPercent);
 
     if (errors.length === 0) {
       const fd = new FormData();
@@ -106,6 +106,8 @@ const Transaction = (props) => {
       fd.set("feeRate", formData.feeRate);
       fd.set("file", formData.file);
       fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
+
+      //console.log("feeeeeeeeeeeee rateeeeeeeeee", fd.get("feeRate"));
 
       // setBTFD(fd);
 
@@ -143,7 +145,7 @@ const Transaction = (props) => {
     setShowModal(false);
   };
 
-  console.log("show confirm payment", showConfirmPayment);
+  //console.log("show confirm payment", showConfirmPayment);
 
   // if (showConfirmPayment) {
   //   props.history.push({

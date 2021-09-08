@@ -60,7 +60,7 @@ const AuthState = (props) => {
         dispatch({ type: LOGIN_SUCCESS, payload: data });
       }
     } catch (error) {
-      console.log(error.response);
+      //console.log(error.response);
 
       if (
         error?.response?.data?.error ===
@@ -124,11 +124,11 @@ const AuthState = (props) => {
         dispatch({ type: VERIFY_EMAIL_FAILURE, payload: data.error });
       }
     } catch (error) {
-      console.log("Error");
-      // console.log(error);
-      // console.log(error.response);
+      //console.log("Error");
+      // //console.log(error);
+      // //console.log(error.response);
       if (error.response.status === 404) {
-        console.log(error.response);
+        //console.log(error.response);
         return dispatch({
           type: VERIFY_EMAIL_FAILURE,
           payload: "Your email cannot be validated.",

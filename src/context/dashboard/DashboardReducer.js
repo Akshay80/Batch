@@ -72,7 +72,7 @@ const DashboardReducer = (state, action) => {
         batchTransactionCommissionPercent: "",
       };
     case SET_SHOW_CONFIRM_PAYMENT_TRUE:
-      console.log("SET_SHOW_CONFIRM_PAYMENT_TRUE");
+      //console.log("SET_SHOW_CONFIRM_PAYMENT_TRUE");
       return {
         ...state,
         showConfirmPayment: true,
@@ -83,7 +83,7 @@ const DashboardReducer = (state, action) => {
         showConfirmPayment: false,
       };
     case SET_CONFIRM_PAYMENT_DATA:
-      console.log("dataaaaaaaaaaaa", action.payload);
+      //console.log("dataaaaaaaaaaaa", action.payload);
       return {
         ...state,
         confirmPaymentData: action.payload,

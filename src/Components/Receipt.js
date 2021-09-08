@@ -13,7 +13,7 @@ import DashboardContext from "../context/dashboard/DashboardContext";
 function Receipt() {
   const { showReceipt, receiptData } = useContext(DashboardContext);
 
-  console.log("RECEIPT_DATA", receiptData);
+  //console.log("RECEIPT_DATA", receiptData);
 
   const { externalWallets } = receiptData;
 
@@ -155,7 +155,7 @@ function Receipt() {
                             className="input-group-text textboxTitle mb-3"
                             id="basic-addon1"
                           >
-                           Bitcoin Address
+                            Bitcoin Address
                           </div>
                           <div className="col-lg-12 col-sm pb-3">
                             <div className="input-group input-group-sm ">

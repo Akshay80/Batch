@@ -1,24 +1,36 @@
 import React, { useContext, useEffect } from "react";
 
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 import "../css/confirm.css";
 
-const Confirm = ({ history }) => {
-  const { batchTransaction, showReceipt, confirmPayment, confirmPaymentData } =
-    useContext(DashboardContext);
+const Confirm = (props) => {
+  const {
+    batchTransaction,
+    batchTransactionCommissionPercent,
+    showReceipt,
+    confirmPayment,
+    confirmPaymentData,
+  } = useContext(DashboardContext);
 
-  // console.log("props", props);
+  // //console.log("props", props);
 
-  // console.log("state", props.location.state);
+  // //console.log("state", props.location.state);
 
-  // const { commissionPercent, feeRate, file } = props.location.state;
+  const { feeRate } = props.location.state;
 
-  // console.log("btcp", commissionPercent);
-  // console.log("fr", feeRate);
-  // console.log("f", file);
+  const { commissionInBtc, estimateNetworkFees, totalAmountInBtc, receivers } =
+    confirmPaymentData;
+
+  const { error, externalWallets } = confirmPaymentData;
+
+  // //console.log("btcp", commissionPercent);
+  // //console.log("fr", feeRate);
+  // //console.log("f", file);
+
+  //console.log(props.location);
 
   const setShowModal = (props) => {};
 
@@ -30,9 +42,39 @@ const Confirm = ({ history }) => {
     // fd.set("userId", JSON.parse(localStorage.getItem("user")).userData.id);
     // batchTransaction(fd, props.history);
 
-    const body = {};
+    let r = [];
 
-    batchTransaction();
+    //console.log(externalWallets);
+    //console.log(receivers);
+
+    receivers?.map((item) => {
+      r.push({
+        amount: item.amount,
+        btcAddress: item.btcAddress,
+        email: item.email,
+        name: item.name,
+      });
+    });
+
+    externalWallets?.map((item) => {
+      r.push({
+        amount: item.amount,
+        btcAddress: item.bitcoinAddress,
+        email: item.email,
+        name: item.name,
+      });
+    });
+
+    const body = {
+      commission: batchTransactionCommissionPercent,
+      feeRate: feeRate,
+      receivers: r,
+      userId: JSON.parse(localStorage.getItem("user")).userData.id,
+    };
+
+    //console.log("confirm body", body);
+
+    batchTransaction(body, props.history);
   };
 
   const style = {
@@ -55,12 +97,7 @@ const Confirm = ({ history }) => {
     confirmPayment();
   }, []);
 
-  console.log("CPD", confirmPaymentData);
-
-  const { commissionInBtc, estimateNetworkFees, totalAmountInBtc, receivers } =
-    confirmPaymentData;
-
-  const { error, externalWallets } = confirmPaymentData;
+  //console.log("CPD", confirmPaymentData);
 
   if (showReceipt) {
     return <Redirect to="/receipt" />;
@@ -69,7 +106,7 @@ const Confirm = ({ history }) => {
   // const history = useHistory();
 
   const handleDeny = () => {
-    history.replace("/dashboard");
+    props.history.replace("/dashboard");
   };
 
   return (
