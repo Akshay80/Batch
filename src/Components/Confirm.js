@@ -94,8 +94,8 @@ const Confirm = (props) => {
   };
 
   useEffect(() => {
-    confirmPayment();// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
+    confirmPayment(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //console.log("CPD", confirmPaymentData);
 
@@ -129,35 +129,44 @@ const Confirm = (props) => {
             >
               Confirm Payment
             </h2>
-            <div className="card-body p-2">
-              <div className="d-flex justify-content-around mb-1 text-center">
-                <div className="p-2" style={style.titles}>
-                  Total Balance
-                </div>
-                <div className="p-2" style={style.amounts}>
-                  {totalAmountInBtc ? totalAmountInBtc : 0.00003}
-                </div>
-              </div>
-              <div className="d-flex justify-content-around mb-1 text-center">
-                <div className="p-2" style={style.titles}>
-                  Fee Rate&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
-                <div className="p-2 text-success" style={style.amounts}>
-                  {estimateNetworkFees ? estimateNetworkFees : 0.000002}
-                </div>
-              </div>
-              <div className="d-flex justify-content-around mb-1 text-center">
-                <div className="p-2" style={style.titles}>
-                  Commission
-                </div>
-                <div className="p-2 text-danger" style={style.amounts}>
-                  {commissionInBtc ? commissionInBtc : 0.000004}
-                </div>
-              </div>
-              <hr color="lightgrey mt-4" />
 
+            <div className="card-body p-2">
+              {!error && (
+                <>
+                  <div className="d-flex justify-content-around mb-1 text-center">
+                    <div className="p-2" style={style.titles}>
+                      Total Balance
+                    </div>
+                    <div className="p-2" style={style.amounts}>
+                      {totalAmountInBtc ? totalAmountInBtc : 0.00003}
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-around mb-1 text-center">
+                    <div className="p-2" style={style.titles}>
+                      Fee Rate&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div className="p-2 text-success" style={style.amounts}>
+                      {estimateNetworkFees ? estimateNetworkFees : 0.000002}
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-around mb-1 text-center">
+                    <div className="p-2" style={style.titles}>
+                      Commission
+                    </div>
+                    <div className="p-2 text-danger" style={style.amounts}>
+                      {commissionInBtc ? commissionInBtc : 0.000004}
+                    </div>
+                  </div>
+                  <hr color="lightgrey mt-4" />
+                </>
+              )}
               {/* User Info Table */}
-              <text className="text-danger d-block mx-auto" style={{textAlign:"center"}}>{error}.</text>
+              <p
+                className="text-danger d-block mx-auto mt-4"
+                style={{ textAlign: "center" }}
+              >
+                {error}
+              </p>
               <div className="table-responsive">
                 <table className="table table-bordered mt-4 mb-3">
                   <thead>
@@ -219,6 +228,7 @@ const Confirm = (props) => {
                   className="btn btn-outline-success"
                   style={{ backgroundColor: "" }}
                   onClick={handleConfirm}
+                  disabled={error ? "true" : false}
                 >
                   Proceed to Pay
                 </button>

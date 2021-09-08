@@ -27,11 +27,11 @@ function Select() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleSelectTypeRegular = () => {
-    setBatchTransactionComnissionPercent(user.defixCommission);
+    setBatchTransactionComnissionPercent(user.externalCommission);
   };
 
   const handleSelectTypeFranchise = () => {
-    setBatchTransactionComnissionPercent(user.externalCommission);
+    setBatchTransactionComnissionPercent(user.defixCommission);
   };
 
   return (
