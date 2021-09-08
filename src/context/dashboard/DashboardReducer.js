@@ -13,6 +13,7 @@ import {
   CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
   SET_SHOW_CONFIRM_PAYMENT_TRUE,
   SET_SHOW_CONFIRM_PAYMENT_FALSE,
+  SET_CONFIRM_PAYMENT_DATA,
 } from "./types";
 
 const DashboardReducer = (state, action) => {
@@ -80,6 +81,12 @@ const DashboardReducer = (state, action) => {
       return {
         ...state,
         showConfirmPayment: false,
+      };
+    case SET_CONFIRM_PAYMENT_DATA:
+      console.log("dataaaaaaaaaaaa", action.payload);
+      return {
+        ...state,
+        confirmPaymentData: action.payload,
       };
     default:
       return state;

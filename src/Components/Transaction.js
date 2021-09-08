@@ -22,6 +22,7 @@ const Transaction = (props) => {
     batchTransactionCommissionPercent,
     showConfirmPayment,
     setShowConfirmPayment,
+    confirmPayment,
   } = useContext(DashboardContext);
 
   console.log("btcp", batchTransactionCommissionPercent);
@@ -77,7 +78,7 @@ const Transaction = (props) => {
     }
   };
 
-  const handleBatchTransaction = (e) => {
+  const handleShowConfirmPayment = (e) => {
     e.preventDefault();
 
     const errors = [];
@@ -110,17 +111,19 @@ const Transaction = (props) => {
 
       // batchTransaction(fd, setShowModal);
 
+      confirmPayment(fd, props.history);
+
       // setShowConfirmPayment();
 
-      props.history.push({
-        pathname: "/confirm-payment",
-        state: {
-          commissionPercent: batchTransactionCommissionPercent,
-          feeRate: formData.feeRate,
-          file: formData.file,
-          userId: JSON.parse(localStorage.getItem("user")).userData.id,
-        },
-      });
+      // props.history.push({
+      //   pathname: "/confirm-payment",
+      //   state: {
+      //     commissionPercent: batchTransactionCommissionPercent,
+      //     feeRate: formData.feeRate,
+      //     file: formData.file,
+      //     userId: JSON.parse(localStorage.getItem("user")).userData.id,
+      //   },
+      // });
 
       // return (
       //   <Redirect
@@ -409,7 +412,7 @@ const Transaction = (props) => {
                   <button
                     type="submit"
                     className="btn btn-primary btn-lg btn-block text-center mx-auto d-block mt-4 SendBtn"
-                    onClick={handleBatchTransaction}
+                    onClick={handleShowConfirmPayment}
                     disabled={isUploading ? true : false}
                   >
                     {isUploading ? `Uploading...${uploadPercent}%` : "Send"}
