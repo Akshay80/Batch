@@ -12,11 +12,11 @@ import {
   SET_UPLOAD_PERCENT,
   SET_UPLOADING_TRUE,
   SET_UPLOADING_FALSE,
-  SET_RECEIPT_DATA_SUCCESS,
+  // SET_RECEIPT_DATA_SUCCESS,
   SET_BATCH_TRANSACTION_COMMISSION_PERCENT,
   CLEAR_BATCH_TRANSACTION_COMMISSION_PERCENT,
   SET_SHOW_CONFIRM_PAYMENT_TRUE,
-  SET_SHOW_CONFIRM_PAYMENT_FALSE,
+  // SET_SHOW_CONFIRM_PAYMENT_FALSE,
   SET_CONFIRM_PAYMENT_DATA,
 } from "./types";
 
@@ -257,7 +257,7 @@ const DashboardState = (props) => {
         }
       );
 
-      //console.log(data);
+      console.log(data);
     } catch (error) {
       // //console.log(error.response.data);
       // //console.log(error);

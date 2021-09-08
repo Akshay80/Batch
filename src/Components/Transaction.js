@@ -15,13 +15,13 @@ const Transaction = (props) => {
     feeRate,
     getFeeRate,
     getBalance,
-    batchTransaction,
+    // batchTransaction,
     isUploading,
     uploadPercent,
     showReceipt,
     batchTransactionCommissionPercent,
-    showConfirmPayment,
-    setShowConfirmPayment,
+    // showConfirmPayment,
+    // setShowConfirmPayment,
     confirmPayment,
   } = useContext(DashboardContext);
 
@@ -43,7 +43,7 @@ const Transaction = (props) => {
     userId: "",
   });
 
-  const [BTFD, setBTFD] = useState();
+  // const [BTFD, setBTFD] = useState();
 
   const fileAlert = useRef(null);
 

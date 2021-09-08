@@ -32,7 +32,7 @@ const Confirm = (props) => {
 
   //console.log(props.location);
 
-  const setShowModal = (props) => {};
+  // const setShowModal = (props) => {};
 
   const handleConfirm = () => {
     // const fd = new FormData();
@@ -48,7 +48,7 @@ const Confirm = (props) => {
     //console.log(receivers);
 
     receivers?.map((item) => {
-      r.push({
+      return r.push({
         amount: item.amount,
         btcAddress: item.btcAddress,
         email: item.email,
@@ -57,7 +57,7 @@ const Confirm = (props) => {
     });
 
     externalWallets?.map((item) => {
-      r.push({
+      return r.push({
         amount: item.amount,
         btcAddress: item.bitcoinAddress,
         email: item.email,
@@ -94,8 +94,8 @@ const Confirm = (props) => {
   };
 
   useEffect(() => {
-    confirmPayment();
-  }, []);
+    confirmPayment();// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
 
   //console.log("CPD", confirmPaymentData);
 
@@ -157,7 +157,7 @@ const Confirm = (props) => {
               <hr color="lightgrey mt-4" />
 
               {/* User Info Table */}
-              {error}
+              <text className="text-danger d-block mx-auto" style={{textAlign:"center"}}>{error}.</text>
               <div className="table-responsive">
                 <table className="table table-bordered mt-4 mb-3">
                   <thead>

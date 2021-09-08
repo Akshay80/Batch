@@ -25,7 +25,7 @@ const VerifyEmail = () => {
     }
   };
 
-  //console.log(userId);
+  console.log(userId);
   useEffect(() => {
     decodeBase64();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps

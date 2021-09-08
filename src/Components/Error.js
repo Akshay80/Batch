@@ -1,6 +1,5 @@
 import React from "react";
 import err from "../images/error.png";
-import { Link } from "react-router-dom";
 
 const Error = (props) => {
   //console.log("...........................", props.location.state);
