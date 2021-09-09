@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
-import failbox from "../images/Fail-box.png";
+// import failbox from "../images/Fail-box.png";
 import success from "../images/success-icon.png";
 import successbox from "../images/success-box.png";
 
@@ -10,16 +10,20 @@ import { successJSON } from "./successJSON";
 
 import DashboardContext from "../context/dashboard/DashboardContext";
 
-function Receipt() {
-  const { showReceipt, receiptData } = useContext(DashboardContext);
+function Receipt(props) {
+  //   const { showReceipt, receiptData } = useContext(DashboardContext);
 
   //console.log("RECEIPT_DATA", receiptData);
 
-  const { externalWallets } = receiptData;
+  //   const { externalWallets } = receiptData;
 
   // if (!showReceipt) {
   //   return <Redirect to="/batch-transaction" />;
   // }
+
+  console.log("state", props.location.state);
+
+  const { transactionDetails } = props.location.state;
 
   return (
     <>
@@ -73,7 +77,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              value={successJSON.transactionDetails.txid}
+                              value={transactionDetails.txid}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                               readOnly
@@ -94,9 +98,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              defaultValue={
-                                successJSON.transactionDetails.amount
-                              }
+                              defaultValue={transactionDetails.amount}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                               readOnly
@@ -114,7 +116,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              value={successJSON.transactionDetails.fee}
+                              value={transactionDetails.fee}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                               readOnly
@@ -132,9 +134,7 @@ function Receipt() {
                             <input
                               type="text"
                               className="form-control rounded-start"
-                              value={
-                                successJSON.transactionDetails.confirmations
-                              }
+                              value={transactionDetails.confirmations}
                               aria-label="Username"
                               aria-describedby="basic-addon1"
                               readOnly
@@ -148,7 +148,7 @@ function Receipt() {
 
                     {/* Second Card (Address, Amount) */}
 
-                    {successJSON.transactionDetails.details.map((item) => (
+                    {transactionDetails.details.map((item) => (
                       <div className="card innerCards1 mb-3">
                         <div className="row">
                           <div
@@ -198,105 +198,6 @@ function Receipt() {
                   </div>
                 </div>
                 {/* Success Component Ends Here */}
-
-                {externalWallets.map(
-                  ({ amount, name, bitcoinAddress, message, email }) => {
-                    return (
-                      <React.Fragment key={bitcoinAddress}>
-                        <img
-                          src={failbox}
-                          alt="success_box"
-                          width="250px"
-                          className="d-block mx-auto mt-5 failImage"
-                        />
-                        <div className="container">
-                          <div className="card outerfailureCard">
-                            <p>{message}</p>
-                            <div className="card innerCards1">
-                              <div className="row">
-                                <div className="col-sm col-lg-6 pb-3">
-                                  <div className="input-group input-group-sm ">
-                                    <span
-                                      className="input-group-text textboxSide"
-                                      id="basic-addon1"
-                                    >
-                                      Bitcoin Address
-                                    </span>
-                                    <input
-                                      type="text"
-                                      className="form-control rounded-start"
-                                      placeholder={bitcoinAddress}
-                                      disabled
-                                      aria-label="Username"
-                                      aria-describedby="basic-addon1"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm">
-                                  <div className="input-group input-group-sm ">
-                                    <span
-                                      className="input-group-text textboxSide"
-                                      id="basic-addon1"
-                                    >
-                                      Amount
-                                    </span>
-                                    <input
-                                      type="text"
-                                      className="form-control rounded-start"
-                                      placeholder={amount}
-                                      disabled
-                                      aria-label="Username"
-                                      aria-describedby="basic-addon1"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="row">
-                                <div className="col-sm mt-3">
-                                  <div className="input-group input-group-sm ">
-                                    <span
-                                      className="input-group-text textboxSide"
-                                      id="basic-addon1"
-                                    >
-                                      &nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;
-                                    </span>
-                                    <input
-                                      type="text"
-                                      className="form-control rounded-start"
-                                      placeholder={email}
-                                      disabled
-                                      aria-label="Username"
-                                      aria-describedby="basic-addon1"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm mt-3">
-                                  <div className="input-group input-group-sm ">
-                                    <span
-                                      className="input-group-text textboxSide"
-                                      id="basic-addon1"
-                                    >
-                                      &nbsp;Name&nbsp;&nbsp;
-                                    </span>
-                                    <input
-                                      type="text"
-                                      className="form-control rounded-start"
-                                      placeholder={name}
-                                      disabled
-                                      aria-label="Username"
-                                      aria-describedby="basic-addon1"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </React.Fragment>
-                    );
-                  }
-                )}
               </div>
             </div>
           </div>

@@ -248,6 +248,8 @@ const DashboardState = (props) => {
     try {
       const { data } = await axios.post(
         baseURL + "/batch/confirmPayment",
+        // data.success=true
+        // "http://localhost:5000/",
         body,
         {
           headers: {
@@ -258,21 +260,21 @@ const DashboardState = (props) => {
       );
 
       console.log(data);
+
+      if (data.success) {
+        return history.replace({
+          pathname: "/receiptt",
+          state: data,
+        });
+      }
     } catch (error) {
-      // //console.log(error.response.data);
-      // //console.log(error);
-      //console.log(error.response.data.success);
       if (error.response.status === 500) {
         if (error.response.data.success === false) {
-          // history.replace("/xyz");
-
           history.replace({
             pathname: "/error",
             state: { error: error.response.data.error },
           });
         }
-
-        //console.log(error.response.data);
       }
     }
   };

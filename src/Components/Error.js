@@ -47,7 +47,7 @@ const Error = (props) => {
                   }}
                   className="btn btn-outline-danger btn-block text-center mx-auto d-block mt-5"
                 >
-                  Proceed to Batch Transaction Page &#10142;
+                  Proceed to Dashboard &#10142;
                 </button>
                 {/* </Link> */}
               </form>

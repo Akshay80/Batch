@@ -8,6 +8,7 @@ import Select from "./Components/Select";
 import Fail from "./Components/Fail";
 import Success from "./Components/Success";
 import Receipt from "./Components/Receipt";
+import Receiptt from "./Components/Receiptt";
 import Dashboard from "./Components/Dashboard";
 import Confirm from "./Components/Confirm";
 import Error from "./Components/Error";
@@ -32,7 +33,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Splash} />
               <Route path="/sample" component={Sample} />
-              <Route path="/confirm-payment" component={Confirm}/>
+              <Route path="/confirm-payment" component={Confirm} />
               <Route path="/registration" component={Registration} />
               <Route path="/error" component={Error} />
               <Route path="/login" component={Login} />
@@ -44,6 +45,7 @@ function App() {
               <PrivateRoute path="/success" component={Success} />
               <PrivateRoute path="/fail" component={Fail} />
               <PrivateRoute path="/receipt" component={Receipt} />
+              <PrivateRoute path="/receiptt" component={Receiptt} />
             </Switch>
           </BrowserRouter>
         </DashboardState>
