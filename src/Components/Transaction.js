@@ -61,12 +61,76 @@ const Transaction = (props) => {
       fileReader.onload = () => {
         keys = fileReader.result.toString().split("\n")[0];
 
-        if (keys === "Bitcoin Address,Amount,Name,Email") {
+        console.log("keys", keys);
+
+        // if (keys === "Bitcoin Address,Amount,Name,Email") {
+        //   fileAlert.current.innerText = "";
+        //   setFormData({ ...formData, file: e.target.files[0] });
+        // } else {
+        //   setFormData({ ...formData });
+        //   fileAlert.current.innerText = "CSV file error.";
+        // }
+
+        const error = [];
+        let errorMsg = "";
+
+        if (keys.split(",")[0] !== "Bitcoin Address") {
+          errorMsg =
+            errorMsg +
+            "Invalid " +
+            '"' +
+            keys.split(",")[0] +
+            '"' +
+            " header. \n";
+          error.push(1);
+        }
+
+        if (keys.split(",")[1] !== "Amount") {
+          errorMsg =
+            errorMsg +
+            "Invalid " +
+            '"' +
+            keys.split(",")[1] +
+            '"' +
+            " header. \n";
+          error.push(1);
+        }
+
+        if (keys.split(",")[2] !== "Name") {
+          errorMsg =
+            errorMsg +
+            "Invalid " +
+            '"' +
+            keys.split(",")[2] +
+            '"' +
+            " header. \n";
+          error.push(1);
+        }
+
+        if (keys.split(",")[3] !== "Email") {
+          errorMsg =
+            errorMsg +
+            "Invalid " +
+            '"' +
+            keys.split(",")[3] +
+            '"' +
+            " header. \n";
+          error.push(1);
+        }
+
+        if (keys.split(",").length !== 4) {
+          errorMsg =
+            errorMsg +
+            " File should only contain 4 columns. \n (Bitcoin Address, Amount, Name, Email) ";
+          error.push(1);
+        }
+
+        if (error.length === 0) {
           fileAlert.current.innerText = "";
           setFormData({ ...formData, file: e.target.files[0] });
         } else {
           setFormData({ ...formData });
-          fileAlert.current.innerText = "CSV file error.";
+          fileAlert.current.innerText = errorMsg;
         }
       };
 
