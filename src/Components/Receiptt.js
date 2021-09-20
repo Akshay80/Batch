@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 // import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
@@ -6,9 +6,9 @@ import Header from "./Header";
 import success from "../images/success-icon.png";
 import successbox from "../images/success-box.png";
 
-import { successJSON } from "./successJSON";
+// import { successJSON } from "./successJSON";
 
-import DashboardContext from "../context/dashboard/DashboardContext";
+// import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Receipt(props) {
   //   const { showReceipt, receiptData } = useContext(DashboardContext);

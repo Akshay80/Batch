@@ -37,3 +37,6 @@
     border: 2px solid;
     border-radius: 20px;
 }
+#toaststyle{
+    z-index: 11;
+}

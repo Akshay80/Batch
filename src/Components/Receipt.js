@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Redirect } from "react-router-dom";
 import "../css/success.css";
 import Header from "./Header";
 import failbox from "../images/Fail-box.png";
@@ -11,15 +10,8 @@ import { successJSON } from "./successJSON";
 import DashboardContext from "../context/dashboard/DashboardContext";
 
 function Receipt() {
-  const { showReceipt, receiptData } = useContext(DashboardContext);
-
-  //console.log("RECEIPT_DATA", receiptData);
-
+  const { receiptData } = useContext(DashboardContext);
   const { externalWallets } = receiptData;
-
-  // if (!showReceipt) {
-  //   return <Redirect to="/batch-transaction" />;
-  // }
 
   return (
     <>
