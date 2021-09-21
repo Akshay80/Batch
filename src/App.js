@@ -23,6 +23,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AuthState from "./context/auth/AuthState";
 import DashboardState from "./context/dashboard/DashboardState";
 import Sample from "./Components/Sample";
+import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <PrivateRoute path="/fail" component={Fail} />
               <PrivateRoute path="/receipt" component={Receipt} />
               <PrivateRoute path="/receiptt" component={Receiptt} />
+              <Route path="*" component={PageNotFound} />
             </Switch>
           </BrowserRouter>
         </DashboardState>

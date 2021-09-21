@@ -11,6 +11,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/confirm.css";
 
+import check from "../images/check.png";
+import remove from "../images/remove.png";
+
 const Confirm = (props) => {
   const {
     batchTransaction,
@@ -18,6 +21,9 @@ const Confirm = (props) => {
     showReceipt,
     confirmPayment,
     confirmPaymentData,
+    checkTransactionStatus,
+    transactionStatus,
+    clearTransactionStatus,
   } = useContext(DashboardContext);
   const [isCopied, setisCopied] = useState(false);
   const [notifies, setNotify] = useState(false);
@@ -40,7 +46,7 @@ const Confirm = (props) => {
   const { commissionInBtc, estimateNetworkFees, totalAmountInBtc, receivers } =
     confirmPaymentData;
 
-  const { error, externalWallets } = confirmPaymentData;
+  const { error, externalWallets, message } = confirmPaymentData;
 
   const handleCopy = () => {
     setisCopied(true);
@@ -103,13 +109,49 @@ const Confirm = (props) => {
 
   //console.log("CPD", confirmPaymentData);
 
-  if (showReceipt) {
-    return <Redirect to="/receipt" />;
-  }
-
   const handleDeny = () => {
     props.history.replace("/dashboard");
   };
+
+  // console.log("txn0000", transactionStatus);
+
+  // const handleCheckTransactionStatus = (txn) => {
+  //   console.log("txn1111", txn);
+  //   const interval = setInterval((transactionStatus) => {
+  //     console.log("txn2222", txn);
+  //     console.log("txn3333", transactionStatus);
+  //     console.log("TXN STATUS", txn.status);
+  //     if (txn.status === "confirmed") {
+  //       clearInterval(interval);
+  //     } else {
+  //       checkTransactionStatus();
+  //     }
+  //   }, 5000);
+  // };
+
+  // let i = setInterval(() => {
+  //   checkTransactionStatus(i);
+  // }, 2000);
+
+  // const i = () => {
+  //   let a = setInterval(() => {
+  //     checkTransactionStatus(a);
+  //   }, 2000);
+  //   return a;
+  // };
+
+  const handleCheckTransactionStatus = () => {
+    // clearInterval(i);
+    clearTransactionStatus();
+    // i();
+    let interval = setInterval(() => {
+      checkTransactionStatus(interval);
+    }, 2000);
+  };
+
+  if (showReceipt) {
+    return <Redirect to="/receipt" />;
+  }
 
   return (
     <React.Fragment>
@@ -235,6 +277,150 @@ const Confirm = (props) => {
               <div className="text-center pb-5">
                 <QRCode id="qrStyle" size={150} value={user.btcAddress} />
               </div>
+              <p>{message}</p>
+              <div className="text-center pb-4">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  onClick={handleCheckTransactionStatus}
+                >
+                  Check Transaction Status
+                </button>
+              </div>
+              <div
+                className="modal fade"
+                id="exampleModal"
+                tabIndex="-1"
+                data-bs-backdrop={
+                  transactionStatus.status === "confirmed" ? "true" : "static"
+                }
+                data-bs-keyboard={
+                  transactionStatus.status === "confirmed" ? "true" : "false"
+                }
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div class="modal-header border-0">
+                      {transactionStatus.status === "confirmed" && (
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      )}
+                    </div>
+                    <h4 className="text-center pt-3">Transaction Status</h4>
+                    <div className="modal-body">
+                      <p className="text-center">{transactionStatus.message}</p>
+                      {/* SVG icon starts here */}
+                      <div className="text-center">
+                        {transactionStatus.status === "confirmed" && (
+                          <img src={check} alt="confirmed" width="36" />
+                        )}
+
+                        {transactionStatus.status === "pending" && (
+                          <svg
+                            width="44"
+                            height="44"
+                            viewBox="0 0 44 44"
+                            xmlns="http://www.w3.org/2000/svg"
+                            stroke="#000"
+                          >
+                            <g fill="none" fillRule="evenodd" strokeWidth="2">
+                              <circle cx="22" cy="22" r="1">
+                                <animate
+                                  attributeName="r"
+                                  begin="0s"
+                                  dur="1.8s"
+                                  values="1; 20"
+                                  calcMode="spline"
+                                  keyTimes="0; 1"
+                                  keySplines="0.165, 0.84, 0.44, 1"
+                                  repeatCount="indefinite"
+                                />
+                                <animate
+                                  attributeName="stroke-opacity"
+                                  begin="0s"
+                                  dur="1.8s"
+                                  values="1; 0"
+                                  calcMode="spline"
+                                  keyTimes="0; 1"
+                                  keySplines="0.3, 0.61, 0.355, 1"
+                                  repeatCount="indefinite"
+                                />
+                              </circle>
+                              <circle cx="22" cy="22" r="1">
+                                <animate
+                                  attributeName="r"
+                                  begin="-0.9s"
+                                  dur="1.8s"
+                                  values="1; 20"
+                                  calcMode="spline"
+                                  keyTimes="0; 1"
+                                  keySplines="0.165, 0.84, 0.44, 1"
+                                  repeatCount="indefinite"
+                                />
+                                <animate
+                                  attributeName="stroke-opacity"
+                                  begin="-0.9s"
+                                  dur="1.8s"
+                                  values="1; 0"
+                                  calcMode="spline"
+                                  keyTimes="0; 1"
+                                  keySplines="0.3, 0.61, 0.355, 1"
+                                  repeatCount="indefinite"
+                                />
+                              </circle>
+                            </g>
+                          </svg>
+                        )}
+                      </div>
+                      {/* Svg icon ends */}
+                    </div>
+
+                    <p className="text-center pb-1">
+                      Status:{" "}
+                      <span
+                        className={
+                          transactionStatus.status === "confirmed"
+                            ? "text-success"
+                            : "text-warning"
+                        }
+                      >
+                        {transactionStatus.status}
+                      </span>
+                    </p>
+
+                    {transactionStatus.status === "confirmed" && (
+                      <div className="modal-footer border-0">
+                        <button
+                          type="button"
+                          className="btn btn-outline-success"
+                          data-bs-dismiss="modal"
+                          style={{ backgroundColor: "" }}
+                          onClick={handleConfirm}
+                          disabled={error ? "true" : false}
+                        >
+                          Proceed to Pay
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger"
+                          data-bs-dismiss="modal"
+                          onClick={handleDeny}
+                        >
+                          Deny
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
 
               <div className="table-responsive" style={{ height: 300 }}>
                 <table className="table table-bordered mt-4 mb-3">
@@ -290,7 +476,7 @@ const Confirm = (props) => {
                   </tbody>
                 </table>
               </div>
-
+              {/* 
               <div className="modal-footer border-0">
                 <button
                   type="button"
@@ -308,7 +494,7 @@ const Confirm = (props) => {
                 >
                   Deny
                 </button>
-              </div>
+              </div> */}
 
               {notifies ? (
                 <ToastContainer

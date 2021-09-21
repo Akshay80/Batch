@@ -25,7 +25,7 @@ if (!localStorage.getItem("isAuth")) {
 }
 
 const AuthState = (props) => {
-  const baseURL = "http://walletapi.ftechiz.com:9090";
+  const baseURL = "http://18.207.182.108:9090";
 
   const initialState = {
     isLoading: false,

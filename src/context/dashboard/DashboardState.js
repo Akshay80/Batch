@@ -18,6 +18,9 @@ import {
   SET_SHOW_CONFIRM_PAYMENT_TRUE,
   // SET_SHOW_CONFIRM_PAYMENT_FALSE,
   SET_CONFIRM_PAYMENT_DATA,
+  CHECK_TRANSACTION_STATUS_SUCCESS,
+  CHECK_TRANSACTION_STATUS_FAILURE,
+  CLEAR_TRANSACTION_STATUS,
 } from "./types";
 
 import axios from "axios";
@@ -25,7 +28,7 @@ import axios from "axios";
 const DashboardState = (props) => {
   const { logout } = useContext(AuthContext);
 
-  const baseURL = "http://walletapi.ftechiz.com:9090";
+  const baseURL = "http://18.207.182.108:9090";
 
   const initialState = {
     isLoading: false,
@@ -39,6 +42,10 @@ const DashboardState = (props) => {
     batchTransactionCommissionPercent: "",
     showConfirmPayment: false,
     confirmPaymentData: {},
+    transactionStatus: {
+      message: "",
+      status: "",
+    },
   };
 
   const [state, dispatch] = useReducer(DashboardReducer, initialState);
@@ -279,6 +286,34 @@ const DashboardState = (props) => {
     }
   };
 
+  const checkTransactionStatus = async (interval) => {
+    try {
+      const { data } = await axios.get(
+        baseURL + `/batch/checkTxnStatus/${user.userData.id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.jwtToken}`,
+          },
+        }
+      );
+      // console.log(data);
+      if (data.success) {
+        dispatch({ type: CHECK_TRANSACTION_STATUS_SUCCESS, payload: data });
+        if (data.status === "confirmed") {
+          return clearInterval(interval);
+        }
+      }
+    } catch (error) {
+      dispatch({ type: CHECK_TRANSACTION_STATUS_FAILURE });
+      console.log(error);
+    }
+  };
+
+  const clearTransactionStatus = () => {
+    dispatch({ type: CLEAR_TRANSACTION_STATUS });
+  };
+
   return (
     <DashboardContext.Provider
       value={{
@@ -302,6 +337,9 @@ const DashboardState = (props) => {
         confirmPaymentData: state.confirmPaymentData,
         confirmPayment,
         batchTransaction,
+        checkTransactionStatus,
+        transactionStatus: state.transactionStatus,
+        clearTransactionStatus,
       }}
     >
       {props.children}

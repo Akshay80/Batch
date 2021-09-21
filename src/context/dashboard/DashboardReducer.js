@@ -14,6 +14,9 @@ import {
   SET_SHOW_CONFIRM_PAYMENT_TRUE,
   SET_SHOW_CONFIRM_PAYMENT_FALSE,
   SET_CONFIRM_PAYMENT_DATA,
+  CHECK_TRANSACTION_STATUS_SUCCESS,
+  CHECK_TRANSACTION_STATUS_FAILURE,
+  CLEAR_TRANSACTION_STATUS,
 } from "./types";
 
 const DashboardReducer = (state, action) => {
@@ -87,6 +90,31 @@ const DashboardReducer = (state, action) => {
       return {
         ...state,
         confirmPaymentData: action.payload,
+      };
+
+    case CHECK_TRANSACTION_STATUS_SUCCESS:
+      return {
+        ...state,
+        transactionStatus: {
+          message: action.payload.message,
+          status: action.payload.status,
+        },
+      };
+    case CHECK_TRANSACTION_STATUS_FAILURE:
+      return {
+        ...state,
+        transactionStatus: {
+          message: "Error.",
+          status: "Error",
+        },
+      };
+    case CLEAR_TRANSACTION_STATUS:
+      return {
+        ...state,
+        transactionStatus: {
+          message: "Waiting for the transaction.",
+          status: "pending",
+        },
       };
     default:
       return state;
