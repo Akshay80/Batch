@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../css/confirm.css";
 
 import check from "../images/check.png";
-import remove from "../images/remove.png";
+// import remove from "../images/remove.png";
 
 const Confirm = (props) => {
   const {
