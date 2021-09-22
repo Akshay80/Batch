@@ -29,6 +29,8 @@ body {
   font-weight: 300;
   text-align: center;
   color: #878787;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .GotoBtn {

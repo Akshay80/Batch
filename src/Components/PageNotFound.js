@@ -4,11 +4,12 @@ import "../css/notfound.css";
 const PageNotFound = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
+        <div>
         <h2 className="Title mt-5">404</h2>
-      </div>
+        </div>
       <div className="subTitle">
-        <h4>Page Not Found!</h4>
+        <h4 style={{fontWeight: "bold"}}>Page Not Found!</h4>
       </div>
       <div>
         <p className="content pt-3">
@@ -22,6 +23,7 @@ const PageNotFound = () => {
         <a className="GotoBtn" href="/">
           <span>&#10149;</span> Go to Homepage
         </a>
+      </div>
       </div>
     </>
   );
