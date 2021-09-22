@@ -43,7 +43,7 @@ const Confirm = (props) => {
 
   const { feeRate } = props.location.state;
 
-  const { commissionInBtc, estimateNetworkFees, totalAmountInBtc, receivers } =
+  const { estimateNetworkFees, totalAmountInBtc, receivers } =
     confirmPaymentData;
 
   const { error, externalWallets, message } = confirmPaymentData;
@@ -182,7 +182,7 @@ const Confirm = (props) => {
                       Total Balance
                     </div>
                     <div className="p-2" style={style.amounts}>
-                      {totalAmountInBtc ? totalAmountInBtc : 0.00003}
+                      {totalAmountInBtc ? totalAmountInBtc.toFixed(8) : 0.00003}
                     </div>
                   </div>
                   <div className="d-flex justify-content-around mb-1 text-center">
@@ -190,17 +190,17 @@ const Confirm = (props) => {
                       Fee Rate
                     </div>
                     <div className="p-2 text-success" style={style.amounts}>
-                      {estimateNetworkFees ? estimateNetworkFees : 0.000002}
+                      {estimateNetworkFees ? estimateNetworkFees.toFixed(8) : 0.000002}
                     </div>
                   </div>
-                  <div className="d-flex justify-content-around mb-1 text-center">
+                  {/* <div className="d-flex justify-content-around mb-1 text-center">
                     <div className="p-2" style={style.titles}>
                       Commission
                     </div>
                     <div className="p-2 text-danger" style={style.amounts}>
                       {commissionInBtc ? commissionInBtc : 0.000004}
                     </div>
-                  </div>
+                  </div> */}
                   <hr color="lightgrey mt-4" />
                 </>
               )}
